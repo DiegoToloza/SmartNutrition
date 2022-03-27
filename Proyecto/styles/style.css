@@ -14,7 +14,6 @@ p {
 }
 
 ul {
-    float: right;
     display: flex;
     list-style-type: none;
     overflow: hidden;
@@ -27,7 +26,11 @@ ul {
     background-color: #29d1b0;
 }
 
-#top-header li a:link, #top-header li a:visited {
+#social-media {
+    float: right;
+}
+
+#social-media a:link, #social-media a:visited {
     color: black;
     text-align: center;
     text-decoration: none;
@@ -35,16 +38,16 @@ ul {
     display: block;
 }
 
-#top-header li a:hover, #top-header li a:active {
+#social-media a:hover, #social-media a:active {
     background-color: #25BA9C;
 }
 
-#top-header a img {
+#social-media a img {
     width: 20px;
     padding: 1.5px 10px;
 }
 
-#top-header a div {
+#social-media a div {
     font-size: 20px;
     padding: 1.5px 10px;
 }
@@ -57,17 +60,17 @@ ul {
     display: flex;
 }
 
-#container-header a, #container-header a:visited {
+#icon, #icon:visited {
     text-decoration: none;
     display: inline-flex;
 }
 
-#container-header #icon {
+#icon img {
     width: 40px;
     padding: 5px 5px 5px 10px;
 }
 
-#container-header a div {
+#icon div {
     color: black;
     font-size: 40px;
     padding: 5px 0px 5px 0px;
