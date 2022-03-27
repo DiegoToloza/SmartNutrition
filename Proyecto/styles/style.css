@@ -1,107 +1,175 @@
-header {
-    width: 100%;
-    position: fixed;
+body {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: #333;
+    font-size: 1rem;
+    line-height: 1.5em;
+    margin: 0;
 }
 
 h1 {
-    font-size: 50px;
-    padding: 20px;
+    line-height: 1.3em;
+    font-size: 2rem;
 }
 
 p {
-    width: 500px;
-    padding: 0px 20px 20px 20px;
+    margin-bottom: 1.6em;
 }
 
-ul {
+.container {
+    width: 85%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.header-fix {
+    background: #1EC276 ;
+    color: black;
+    font-size: 1.1rem;
+    padding: 0.7rem 0;
+
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+}
+
+.header-fix a {
+    color: black;
+    text-decoration: none;
+}
+
+.logo-nav-container {
     display: flex;
-    list-style-type: none;
-    overflow: hidden;
-    padding: 0px;
-    margin: 0px;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
-#top-header {
-    height: 26px;
-    background-color: #29d1b0;
-}
-
-#social-media {
-    float: right;
-}
-
-#social-media a:link, #social-media a:visited {
-    color: black;
-    text-align: center;
-    text-decoration: none;
-    height: 100%;
-    display: block;
-}
-
-#social-media a:hover, #social-media a:active {
-    background-color: #25BA9C;
-}
-
-#social-media a img {
-    width: 20px;
-    padding: 1.5px 10px;
-}
-
-#social-media a div {
-    font-size: 20px;
-    padding: 1.5px 10px;
-}
-
-#container-header {
-    width: 100%;
-    background-color: white;
-    border-radius: 0px 0px 10px 10px;
-    box-shadow: 0px 2px 2px rgba(0,0,0,0.1);
+.logo {
     display: flex;
+    align-items: center;
 }
 
-#icon, #icon:visited {
-    text-decoration: none;
-    display: inline-flex;
+    .logo img {
+        width: 2.5rem;
+    }
+
+    .logo div {
+        margin-left: 10px;
+        letter-spacing: 3px;
+        font-size: 1.5rem;
+        font-style: italic;
+    }
+
+.menu-icon {
+    display: none;
 }
 
-#icon img {
-    width: 40px;
-    padding: 5px 5px 5px 10px;
+.navigation ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
 }
 
-#icon div {
-    color: black;
-    font-size: 40px;
-    padding: 5px 0px 5px 0px;
-    font-style: italic;
+    .navigation ul li {
+        display: inline-block;
+    }
+
+        .navigation ul li a {
+            display: block;
+            padding: 0.5rem 1rem;
+            transition: all 0.4s linear;
+            border-radius: 5px;
+        }
+
+            .navigation ul li a:hover {
+                background: #1AB06A;
+            }
+
+.main {
+    padding-top: 5rem;
 }
 
-#container-options {
-    margin-left: auto;
-    display: inline-flex;
-}
-
-#container-options li a:link, #container-options li a:active {
-    color: black;
-    padding: 14px 0px;
-    font-size: 22px;
+.footer {
+    background: #f2f2f2;
+    padding: 4rem 0;
     text-align: center;
-    text-decoration: none;
-    width: 150px;
-    display: block;
+    margin-top: 6rem;
 }
 
-#container-options li a:hover, #container-options li a:visited {
-    color: black;
-    background-color: #EDEDED;
+.social-media {
+    max-width: 300px;
+    margin: 0 auto;
 }
 
-#container-options li .final:hover, #container-options li .final:visited {
-    border-radius: 0px 0px 10px 0px;
-}
+    .social-media ul{
+        padding: 0;
+        display: flex;
+        justify-content: space-between;
+        list-style-type: none;
+    }
 
-#main-area {
-    padding-top: 76px;
-}
+        .social-media ul li a {
+            display: flex;
+            transition: all 0.4s linear;
+            border-radius: 5px;
+        }
 
+            .social-media ul li a img {
+                width: 2rem;
+                padding: 0.5rem;
+            }
+
+            .social-media ul li a:hover {
+                background: #e2e2e2;
+            }
+
+@media only screen and (max-width: 800px) {
+
+    .menu-icon {
+        display: flex;
+        transition: all 0.4s linear;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+        .menu-icon img {
+            padding: 0.5rem;
+            width: 1.5rem;
+        }
+    .menu-icon:hover {
+        background: #1AB06A;
+    }
+
+    .navigation {
+        width: 100%;
+    }
+
+        .navigation ul {
+            display: none;
+        }
+
+        .navigation ul.show {
+            margin-top: 0.75rem;
+            display: block;
+            border-top: 1px solid #1AB06A;
+
+        }
+    
+            .navigation ul li {
+                display: block;
+                margin-top: 0.1rem;
+            }
+
+                .navigation ul li a {
+                    display: block;
+                    padding: 0.5rem 1rem;
+                    text-align: center;
+                    transition: all 0.4s linear;
+                    border-radius: 5px;
+
+                }
+
+                    .navigation ul li a:hover {
+                        background: #1AB06A;
+                    }
+}
