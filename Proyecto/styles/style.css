@@ -142,17 +142,17 @@ p {
 
     .navigation {
         width: 100%;
+        overflow: hidden;
     }
 
         .navigation ul {
             display: none;
         }
 
-        .navigation ul.show {
+        .navigation .show {
             margin-top: 0.75rem;
             display: block;
             border-top: 1px solid #1AB06A;
-
         }
     
             .navigation ul li {
