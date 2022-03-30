@@ -23,7 +23,7 @@ p {
 
 .header-fix {
     background: #1EC276 ;
-    color: black;
+    color: #333;
     font-size: 1.1rem;
     padding: 0.7rem 0;
 
@@ -34,7 +34,7 @@ p {
 }
 
 .header-fix a {
-    color: black;
+    color: #333;
     text-decoration: none;
 }
 
@@ -43,6 +43,11 @@ p {
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
+}
+
+.login {
+    display: flex;
+    justify-content: center;
 }
 
 .logo {
@@ -84,7 +89,14 @@ p {
 
             .navigation ul li a:hover {
                 background: #1AB06A;
+                color: black;
             }
+
+            .navigation ul li .seleccion {
+                background: #1AB06A;
+                color: #e2e2e2;
+            }
+            
 
 .main {
     padding-top: 5rem;
