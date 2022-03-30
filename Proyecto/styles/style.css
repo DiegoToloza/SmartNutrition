@@ -1,0 +1,175 @@
+body {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: #333;
+    font-size: 1rem;
+    line-height: 1.5em;
+    margin: 0;
+}
+
+h1 {
+    line-height: 1.3em;
+    font-size: 2rem;
+}
+
+p {
+    margin-bottom: 1.6em;
+}
+
+.container {
+    width: 85%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.header-fix {
+    background: #1EC276 ;
+    color: black;
+    font-size: 1.1rem;
+    padding: 0.7rem 0;
+
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+}
+
+.header-fix a {
+    color: black;
+    text-decoration: none;
+}
+
+.logo-nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+    .logo img {
+        width: 2.5rem;
+    }
+
+    .logo div {
+        margin-left: 10px;
+        letter-spacing: 3px;
+        font-size: 1.5rem;
+        font-style: italic;
+    }
+
+.menu-icon {
+    display: none;
+}
+
+.navigation ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+    .navigation ul li {
+        display: inline-block;
+    }
+
+        .navigation ul li a {
+            display: block;
+            padding: 0.5rem 1rem;
+            transition: all 0.4s linear;
+            border-radius: 5px;
+        }
+
+            .navigation ul li a:hover {
+                background: #1AB06A;
+            }
+
+.main {
+    padding-top: 5rem;
+}
+
+.footer {
+    background: #f2f2f2;
+    padding: 4rem 0;
+    text-align: center;
+    margin-top: 6rem;
+}
+
+.social-media {
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+    .social-media ul{
+        padding: 0;
+        display: flex;
+        justify-content: space-between;
+        list-style-type: none;
+    }
+
+        .social-media ul li a {
+            display: flex;
+            transition: all 0.4s linear;
+            border-radius: 5px;
+        }
+
+            .social-media ul li a img {
+                width: 2rem;
+                padding: 0.5rem;
+            }
+
+            .social-media ul li a:hover {
+                background: #e2e2e2;
+            }
+
+@media only screen and (max-width: 800px) {
+
+    .menu-icon {
+        display: flex;
+        transition: all 0.4s linear;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+        .menu-icon img {
+            padding: 0.5rem;
+            width: 1.5rem;
+        }
+    .menu-icon:hover {
+        background: #1AB06A;
+    }
+
+    .navigation {
+        width: 100%;
+        overflow: hidden;
+    }
+
+        .navigation ul {
+            display: none;
+        }
+
+        .navigation .show {
+            margin-top: 0.75rem;
+            display: block;
+            border-top: 1px solid #1AB06A;
+        }
+    
+            .navigation ul li {
+                display: block;
+                margin-top: 0.1rem;
+            }
+
+                .navigation ul li a {
+                    display: block;
+                    padding: 0.5rem 1rem;
+                    text-align: center;
+                    transition: all 0.4s linear;
+                    border-radius: 5px;
+
+                }
+
+                    .navigation ul li a:hover {
+                        background: #1AB06A;
+                    }
+}
