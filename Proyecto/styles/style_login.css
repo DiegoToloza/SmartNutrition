@@ -1,0 +1,116 @@
+.main {
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.container {
+    max-width: 400px;
+}
+
+.form {
+    background-color: #1EC276;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+    .form .titles ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: flex;
+    }
+
+        .form .titles ul li {
+            width: 200px;
+            color: #e2e2e2;
+        }
+
+        .form .titles ul li .no-active {
+            background-color: #1AB06A;
+            color: #333;
+        }
+
+            .form .titles ul li div {
+                text-align: center;
+                font-size: 1.3rem;
+                padding: 20px 0px;
+                cursor: pointer;
+            }
+
+    .form .sesion {
+        display: none;
+    }
+
+    .form .active {
+        display: block;
+    }
+
+    .form .sesion {
+        padding: 20px;
+    }
+
+    .form .input-container {
+        margin-top: 25px;
+        position: relative;
+        width: 100%;
+    }
+
+    .form .input-container ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .label {
+        font-size: 1.3rem;
+        margin: 0px 5px;
+    }
+
+    .input {
+        background-color: #e2e2e2;
+        border-radius: 5px;
+        border: 1px #1EC276;
+        box-sizing: border-box;
+        color: #333;
+        font-size: 1.1rem;
+        height: 50px;
+        outline: 0;
+        padding: 0px 20px;
+        width: 100%;
+
+    }
+
+    .input:focus {
+        border: 1px solid #333;
+        transition: all 0.5s linear;
+    }
+
+    .submit {
+        background-color: #08d;
+        border-radius: 5px;
+        border: 0;
+        box-sizing: border-box;
+        color: #eee;
+        cursor: pointer;
+        font-size: 18px;
+        height: 50px;
+        text-align: center;
+        width: 100%;
+    }
+
+    .submit:hover {
+        background-color: #54aee6e5;
+        transition: all 0.3s linear;
+    }
+
+
+@media only screen and (max-height: 640px) {
+    .header-fix {
+        position: relative;
+    }
+}
+
+            
+
