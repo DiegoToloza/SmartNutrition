@@ -15,6 +15,70 @@ p {
     margin-bottom: 1.6em;
 }
 
+h2{
+    text-align: center;
+    font-style: italic;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color:#333;
+    text-shadow: 2px 2px 3px lightslategray;
+    margin-top: 40px;
+}
+    h2 a{
+        color:#333;
+    }
+
+.indice{
+    background: linear-gradient(170deg,white 75%,rgba(29, 180, 29, 0.678));
+    background-attachment: fixed;
+    width: 100%;
+}
+
+#main_title{
+    margin-top: 30px;
+    min-width: 600px;
+    font-style: oblique;
+    text-shadow: 2px 2px 3px #1EC276;
+}
+
+.description {
+    margin-top: 170px ;
+    color :#444;
+    align-items: center;
+}
+
+    .description ul{
+        list-style-type: none;
+        display: flex;
+    }
+    .description img{
+        width: 400px ;
+        min-width: 400px;
+        border-radius: 10%;
+        -webkit-box-reflect: below 5px linear-gradient(transparent,transparent, rgba(255,255,255,0.2));
+        margin-bottom: 40px;
+    }
+
+    .texto1{
+        width: 100% ;
+        max-width: 500px;
+        min-width: 500px;
+        max-height: 500px;
+        margin-right: 200px;
+        font-style: italic;
+        font-size: 25px;
+        text-shadow: 2px 2px 3px lightslategray;
+    }
+    .texto2{
+        width: 100% ;
+        max-width: 500px;
+        min-width: 500px;
+        max-height: 500px;
+        margin-left: 200px;
+        font-style: italic;
+        font-size: 25px;
+        text-shadow: 2px 2px 3px lightslategray;
+    }
+
 .container {
     width: 85%;
     max-width: 1200px;
@@ -91,7 +155,7 @@ p {
                 background: #1AB06A;
                 color: black;
             }
-
+            
             .navigation ul li .seleccion {
                 background: #1AB06A;
                 color: #e2e2e2;
