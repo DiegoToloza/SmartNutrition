@@ -4,6 +4,7 @@ body {
     font-size: 1rem;
     line-height: 1.5em;
     margin: 0;
+    background-image: linear-gradient(to right, #92fe9d 0%, #00c9ff 100%);
 }
 
 h1 {
