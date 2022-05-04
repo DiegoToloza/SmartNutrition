@@ -1,0 +1,30 @@
+<nav class="navbar navbar-expand-lg fixed-top navbar-light nav-header">
+    <div class="container-fluid">
+        <a class="navbar-brand logo" [routerLink]="['/inicio']">
+            <img src="../assets/img/running.svg" alt="Logo" width="36" >
+            <div class="title">SmartNutrition</div>
+            <div class="title-collapsed">SN</div>
+        </a>
+
+        <button class="btn navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-center" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-link" [routerLink]="['/inicio']" [routerLinkActive]="['active_']">Inicio</a>
+                <a class="nav-link" [routerLink]="['/dietas']" [routerLinkActive]="['active_']">Dietas</a>
+                <a class="nav-link" [routerLink]="['/ejercicios']" [routerLinkActive]="['active_']">Ejercicios</a>
+                <a class="nav-link" [routerLink]="['/tienda']" [routerLinkActive]="['active_']">Tienda</a>
+                <a class="nav-link disabled_" href="#">Iniciar Sesión</a>
+            </div>
+        </div>
+
+        <div class="login">
+            <button type="button" class="btn btn-outline-primary me-2 btn-login">Identifícate</button>
+            <button type="button" class="btn btn-primary btn-sign-up">Regístrate</button>
+        </div>
+
+    </div>
+</nav>
