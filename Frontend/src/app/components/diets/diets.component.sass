@@ -1,38 +1,104 @@
-.card
-    border:1px solid #1ec276
-    border-radius: 15px
-
-.card-body
-    background-color: #f5f5f5
-    border-radius: 15px
-    min-height: 150px
-
-img
-    border-radius: 15px 15px 0px 0px
-
-.imagen
-    position: relative
-
-.encima
-    position: absolute
-    color: #f5f5f5
-    bottom: 0px
-    padding: 5px 15px
-    background-color: rgba(119, 119, 119,0.75)
-    border-radius: 0px 15px 15px 0px
-    font-weight: bold
-    margin: 0
-
 .contenedor
     width: 80%
     margin: 0 auto
 
-nav
-    margin: 1rem
+    nav
+        margin: 1rem
 
-.nav-link
-    color: #777777
+        .nav-link
+            color: #777777
+            border-bottom: 2px solid #f5f5f5
 
-.active
-    color: #333
-    border-bottom: 1px solid #1EC276
+            &:hover
+                color: #333
+
+        .active_
+            color: #333
+            border-bottom: 2px solid #1EC276
+
+    .album
+
+        .card-active
+            margin-bottom: 3rem
+            border:1px solid #1ec276
+            border-radius: 15px
+            background-color: #f5f5f5
+            transition: all 300ms
+
+            .image
+                max-height: 200px
+                overflow: hidden
+                position: relative
+
+                img
+                    margin: auto
+                    border-radius: 15px 15px 0px 0px
+                    width: 100%
+
+                h3
+                    position: absolute
+                    color: #f5f5f5
+                    bottom: 0px
+                    padding: 5px 15px
+                    background-color: rgba(119, 119, 119,0.75)
+                    border-radius: 0px 15px 15px 0px
+                    font-weight: bold
+                    margin: 0
+
+        .col
+            .card
+                border:1px solid #1ec276
+                border-radius: 15px
+                background-color: #f5f5f5
+                transition: all 300ms
+
+                .image
+                    position: relative
+
+                    img
+                        border-radius: 15px 15px 0px 0px
+
+                    h5
+                        position: absolute
+                        color: #f5f5f5
+                        bottom: 0px
+                        padding: 5px 15px
+                        background-color: rgba(119, 119, 119,0.75)
+                        border-radius: 0px 15px 15px 0px
+                        font-weight: bold
+                        margin: 0
+
+                .card-body
+                    background-color: #f5f5f5
+                    border-radius: 15px
+                    min-height: 150px
+
+                .card-text-hover
+                    display: none
+                    position: absolute
+                    top: 45%
+                    width: 100%
+                    text-align: center
+                    color: #333
+                    font-size: 1.2rem
+                    font-weight: bolder
+
+                &:hover
+                    cursor: pointer
+                    transform: scale(1.02)
+
+                    .image
+                        opacity: 0.4
+
+                    .card-body
+                        opacity: 0.4
+
+                    .card-text-hover
+                        display: block
+                
+
+
+
+
+
+
