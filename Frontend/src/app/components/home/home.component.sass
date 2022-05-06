@@ -1,25 +1,32 @@
 
 img
-    width: 75% !important
-    max-height: 600px !important
+    max-width: 75% !important
+    max-height: 700px !important
 
 
 .carousel
     width: 90%
     margin: 0 auto
 
+.carousel-item:hover
+    opacity: 0.75
+
 .carousel-caption
     left: auto !important
     right: 0 !important 
-    text-align: left
-    width: 20%
+    padding: 15px
+    text-align: center
+    width: 25%
     float: right
     color: #333
-    background-color: rgba(254,254,254,0.2 )
     height: 100%
     justify-content: center
     flex-direction: column
-    font-size: 1.2rem
+    font-size: 1.2vw
+
+@media only screen and (max-width: 767px)
+    img 
+        max-width: 100% !important
     
     
     
