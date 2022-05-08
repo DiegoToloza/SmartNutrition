@@ -2,80 +2,49 @@
     <nav>
         <ul class="nav justify-content-center">
             <li class="nav-item">
-                <a class="nav-link active" href="#">Dietas No Veganas</a>
+                <a class="nav-link" [routerLink]="['/dietas/no-veganas']" [routerLinkActive]="['active_']">Dietas No Veganas</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Dietas Veganas</a>
+                <a class="nav-link" [routerLink]="['/dietas/veganas']" [routerLinkActive]="['active_']">Dietas Veganas</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Tus Dietas</a>
+                <a class="nav-link" [routerLink]="['/dietas/mis-dietas']" [routerLinkActive]="['active_']">Tus Dietas</a>
             </li>
         </ul>
     </nav>
-    <div class="album py-5">
+
+    <div class="album py-3">
         <div class="container">
 
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3">
-                <div class="col">
-                    <div class="card shadow">
-                        <div class="imagen">
-                            <img src="../assets/img/Diets/cetogenica.jpg" class="card-img-top" alt="...">
-                            
-                            <h5 class="encima">Cetogenea </h5>
-                            
-                        </div>
-                        
-                        <div class="card-body">
-                            
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                                additional content. This content is a little bit longer.</p>
-                        </div>
-                    </div>
+            <div class="card-active shadow" *ngIf="dietActive.name != ''">
+                <div class="image">
+                    <img src={{dietActive.img}} alt="...">
+                    <h3>{{dietActive.name}}</h3>
                 </div>
-                <div class="col">
-                    <div class="card shadow">
-                        <div class="imagen">
-                            <img src="../assets/img/Diets/cetogenica.jpg" class="card-img-top" alt="...">
-                            
-                            <h5 class="encima">Cetogenea </h5>
-                            
+                <div class="card-body">
+                    <p class="card-text description-expanded">
+                        {{dietActive.descriptionExpanded}}
+                    </p>
+                </div>
+                <h1 (click)="disableDisplayDiet()">desactivar</h1>
+            </div>
+            
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3" id="album-diets">
+                <div class="col" *ngFor="let diet of diets; let indice = index">
+                    <div class="card shadow" (click)="displayDiet(indice)">
+                        <div class="image">
+                            <img src={{diet.img}} class="card-img-top" alt="...">
+                            <h5>{{diet.name}}</h5>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text description">
+                                {{diet.description}}
+                            </p>
                         </div>
 
-                        <div class="card-body">
-                            <p class="card-text">This is a wider card with supporting</p>
-                        </div>
+                        <p class="card-text-hover">Más información...</p>
                     </div>
-                </div>
-                <div class="col">
-                    <div class="card shadow">
-                        <div class="imagen">
-                            <img src="../assets/img/Diets/cetogenica.jpg" class="card-img-top" alt="...">
-                            
-                            <h5 class="encima">Cetogenea </h5>
-                            
-                        </div>
-
-                        <div class="card-body">
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                                additional content. This content is a little bit longer.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card shadow">
-                        <div class="imagen">
-                            <img src="../assets/img/Diets/cetogenica.jpg" class="card-img-top" alt="...">
-                            
-                            <h5 class="encima">Cetogenea </h5>
-                            
-                        </div>
-
-                        <div class="card-body">
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                                additional content. This content is a little bit longer.</p>
-                        </div>
-                    </div>
-                </div>
+                </div>               
             </div>
         </div>
     </div>
