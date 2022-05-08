@@ -8,8 +8,6 @@ import { ShopComponent } from './components/shop/shop.component';
 //import { LoginComponent } from './components/login/login.component';
 import { ErrorComponent } from './components/error/error.component';
 
-import { HeaderComponent } from './subcomponents/header/header.component';
-
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'inicio', component: HomeComponent},
@@ -20,7 +18,6 @@ const routes: Routes = [
   {path: 'ejercicios', component: TrainingsComponent},
   {path: 'tienda', component: ShopComponent},
   //{path: 'login', component: LoginComponent},
-  {path: 'nose', component: HeaderComponent},
   {path: '**', component: ErrorComponent}
 ];
 
