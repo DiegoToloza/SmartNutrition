@@ -3,12 +3,14 @@ import { Router } from '@angular/router';
 
 import { Diet } from 'src/app/models/diet';
 import { DietService } from 'src/app/services/diet.service';
+import { UserService } from 'src/app/services/user.service';
+
 
 @Component({
   selector: 'app-diets',
   templateUrl: './diets.component.html',
   styleUrls: ['./diets.component.sass'],
-  providers: [DietService]
+  providers: [DietService, UserService]
 })
 export class DietsComponent implements OnInit {
   public diets: Array<Diet>
@@ -16,10 +18,11 @@ export class DietsComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private _DietService: DietService
+    private _DietService: DietService,
+    private _UserService: UserService
   ) {
     this.diets = new Array()
-    this.dietActive = new Diet('','','','','')
+    this.dietActive = new Diet()
   }
 
   ngOnInit(): void {
@@ -47,7 +50,8 @@ export class DietsComponent implements OnInit {
   }
 
   getMyDiets() {
-    this.diets = this._DietService.getMyDiets()
+    this.diets = this._DietService.getMyDiets(this._UserService.getUser())
+    console.log(this._UserService.getUser())
   }
 
   displayDiet(indice:any) {
@@ -60,6 +64,10 @@ export class DietsComponent implements OnInit {
   }
 
   disableDisplayDiet() {
-    this.dietActive = new Diet('','','','','')
+    this.dietActive = new Diet()
+  }
+
+  userExist() {
+    return this._UserService.userExist()
   }
 }

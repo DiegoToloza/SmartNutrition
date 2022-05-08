@@ -7,7 +7,7 @@
             <li class="nav-item">
                 <a class="nav-link" [routerLink]="['/dietas/veganas']" [routerLinkActive]="['active_']">Dietas Veganas</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" *ngIf="userExist()">
                 <a class="nav-link" [routerLink]="['/dietas/mis-dietas']" [routerLinkActive]="['active_']">Tus Dietas</a>
             </li>
         </ul>
@@ -16,35 +16,40 @@
     <div class="album py-3">
         <div class="container">
 
-            <div class="card-active shadow" *ngIf="dietActive.name != ''">
+            <div class="card-active shadow" *ngIf="dietActive.name != undefined">
                 <div class="image">
                     <img src={{dietActive.img}} alt="...">
                     <h3>{{dietActive.name}}</h3>
+                    <button class="btn btn-close" (click)="disableDisplayDiet()">
+                    </button>
                 </div>
                 <div class="card-body">
-                    <p class="card-text description-expanded">
+                    <p class="card-text">
                         {{dietActive.descriptionExpanded}}
                     </p>
                 </div>
-                <h1 (click)="disableDisplayDiet()">desactivar</h1>
             </div>
             
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3" id="album-diets">
-                <div class="col" *ngFor="let diet of diets; let indice = index">
-                    <div class="card shadow" (click)="displayDiet(indice)">
-                        <div class="image">
-                            <img src={{diet.img}} class="card-img-top" alt="...">
-                            <h5>{{diet.name}}</h5>
-                        </div>
-                        <div class="card-body">
-                            <p class="card-text description">
-                                {{diet.description}}
-                            </p>
-                        </div>
+                <ng-container *ngFor="let diet of diets; let indice = index">
 
-                        <p class="card-text-hover">Más información...</p>
+                    <div class="col" *ngIf="diet.id != dietActive.id">
+                        <div class="card shadow" (click)="displayDiet(indice)">
+                            <div class="image">
+                                <img src={{diet.img}} class="card-img-top" alt="...">
+                                <h5>{{diet.name}}</h5>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">
+                                    {{diet.description}}
+                                </p>
+                            </div>
+    
+                            <p class="card-text-hover">Más información...</p>
+                        </div>
                     </div>
-                </div>               
+
+                </ng-container>               
             </div>
         </div>
     </div>

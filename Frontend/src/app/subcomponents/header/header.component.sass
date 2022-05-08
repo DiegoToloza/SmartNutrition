@@ -67,6 +67,39 @@ header
 
         .login
             display: block
+        
+        .dropdown
+            width: 210px
+            display: flex
+            justify-content: end
+
+            a
+                padding: 0
+                border: 0
+                background: $base-color
+
+                img
+                    margin-right: 10px
+                    border-radius: 999px
+                    border: 2px solid $btn-color-primary
+
+            li
+                a
+                    color: $text-color-secondary
+                    background: #fff
+                    padding: 2.5px 10px
+
+                    &:hover
+                        color: $text-color-primary
+
+                .log-out
+                    color: red
+                    opacity: 0.5
+                    cursor: pointer
+
+                    &:hover
+                        color: red
+                        opacity: 1
 
 @media only screen and (max-width: 991px)
     header
