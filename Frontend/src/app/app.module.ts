@@ -13,6 +13,7 @@ import { ErrorComponent } from './components/error/error.component';
 
 import { HeaderComponent } from './subcomponents/header/header.component';
 import { FooterComponent } from './subcomponents/footer/footer.component';
+import { SignInComponent } from './components/sign-in/sign-in.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { FooterComponent } from './subcomponents/footer/footer.component';
     LoginComponent,
     ErrorComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    SignInComponent
   ],
   imports: [
     BrowserModule,
