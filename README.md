@@ -1,5 +1,7 @@
 # SmartNutrition
 
+Para ejecutar la aplicación, se debe posicionar en la carpeta "Frontend", y mediante Node.js, ejecutar el comando "ng serve".
+
 Cuando la aplicación se conecte a una base de datos
 estarán disponibles las siguientes funcionalidades:
 
