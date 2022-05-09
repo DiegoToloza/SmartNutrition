@@ -54,7 +54,7 @@ export class DietsComponent implements OnInit {
     console.log(this._UserService.getUser())
   }
 
-  displayDiet(indice:any) {
+  displayDiet(indice: any) {
     this.dietActive = this.diets[indice]
     window.scroll({
       top: 0,

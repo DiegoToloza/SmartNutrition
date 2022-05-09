@@ -1,6 +1,5 @@
 import { Injectable } from "@angular/core";
 import { Diet } from "../models/diet";
-import { User } from "../models/user";
 
 @Injectable()
 export class DietService {
@@ -10,17 +9,17 @@ export class DietService {
 
     constructor() {
         this.dietsNoVegans = [
-            new Diet('1234','Caballo', 'A pura agua y paja', '../../assets/imagenes de prueba/Diets/cetogenica.jpg', 'no-vegana', ''),
-            new Diet('1254', 'Caballo 2', 'A pura agua y paja', '../../assets/imagenes de prueba/Diets/cetogenica.jpg', 'no-vegana', ''),
-            new Diet('1546', 'Caballo 3', 'A pura agua y paja', '../../assets/imagenes de prueba/Diets/cetogenica.jpg', 'no-vegana', ''),
-            new Diet('4567', 'Caballo 4', 'A pura agua y paja', '../../assets/imagenes de prueba/Diets/cetogenica.jpg', 'no-vegana', ''),
-            new Diet('6542', 'Caballo 5', 'A pura agua y paja', '../../assets/imagenes de prueba/Diets/cetogenica.jpg', 'no-vegana', '')
+            new Diet('1234','Caballo', 'A pura agua y paja', '../../assets/imagenes de prueba/Diets/cetogenica.jpg', 'no vegana', 'texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo.'),
+            new Diet('1254', 'lorem ipsum', 'texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo', '../../assets/imagenes de prueba/Diets/cetogenica.jpg', 'no vegana', 'texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo.'),
+            new Diet('1546', 'lorem ipsum', 'texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo', '../../assets/imagenes de prueba/Diets/cetogenica.jpg', 'no vegana', 'texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo.'),
+            new Diet('4567', 'lorem ipsum', 'texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo', '../../assets/imagenes de prueba/Diets/cetogenica.jpg', 'no vegana', 'texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo.'),
+            new Diet('6542', 'lorem ipsum', 'texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo', '../../assets/imagenes de prueba/Diets/cetogenica.jpg', 'no vegana', 'texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo.')
         ]
 
         this.dietsVegans = [
-            new Diet('7812', 'Vegana', 'Sin carne', '../../assets/imagenes de prueba/Diets/cetogenica.jpg', 'vegana', ''),
-            new Diet('1232', 'Vegana', 'Sin carne', '../../assets/imagenes de prueba/Diets/cetogenica.jpg', 'vegana', ''),
-            new Diet('5647', 'Vegana', 'Sin carne', '../../assets/imagenes de prueba/Diets/cetogenica.jpg', 'vegana', '')
+            new Diet('7812', 'Vegana 1', 'Sin carne', '../../assets/imagenes de prueba/Diets/cetogenica.jpg', 'vegana', 'texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo.'),
+            new Diet('1232', 'Vegana 2', 'Sin carne', '../../assets/imagenes de prueba/Diets/cetogenica.jpg', 'vegana', 'texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo.'),
+            new Diet('5647', 'Vegana 3', 'Sin carne', '../../assets/imagenes de prueba/Diets/cetogenica.jpg', 'vegana', 'texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo.')
         ]
 
         this.allDiets = new Array()

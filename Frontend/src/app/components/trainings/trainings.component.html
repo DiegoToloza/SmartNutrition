@@ -1,130 +1,113 @@
-<div class="album py-5">
-    <div class="categorias">
-        <H3>Categorías</H3>
+<div class="contenedor">
+    <div class="categorias py-3">
+        <h4>Categorías</h4>
         <ul class="list-unstyled ps-0">
-
             <li class="mb-1">
-                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
-                    data-bs-target="#home-collapse" aria-expanded="false">
-                    <img src="../assets/img/Trainings/arrow.svg" class="flecha" alt="">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#chest-collapse" aria-expanded="false">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
+                        <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753 5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z"/>
+                    </svg>
                     Pecho
                 </button>
-                <div class="collapse" id="home-collapse" style="">
+                <div class="collapse" id="chest-collapse">
                     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                        <li><a href="#" class="link-dark rounded">Principiante</a></li>
-                        <li><a href="#" class="link-dark rounded">Intermedio</a></li>
-                        <li><a href="#" class="link-dark rounded">Avanzado</a></li>
+                        <li><a class="link-dark rounded" (click)="getTrainings('Pecho', 'Principiante')">Principiante</a></li>
+                        <li><a class="link-dark rounded" (click)="getTrainings('Pecho', 'Intermedio')">Intermedio</a></li>
+                        <li><a class="link-dark rounded" (click)="getTrainings('Pecho', 'Avanzado')">Avanzado</a></li>
                     </ul>
                 </div>
             </li>
             <li class="mb-1">
-                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
-                    data-bs-target="#espalda-collapse" aria-expanded="false">
-                    <img src="../assets/img/Trainings/arrow.svg" class="flecha" alt="">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#back-collapse" aria-expanded="false">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
+                        <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753 5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z"/>
+                    </svg>
                     Espalda
                 </button>
-                <div class="collapse" id="espalda-collapse" style="">
+                <div class="collapse" id="back-collapse">
                     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                        <li><a href="#" class="link-dark rounded">Principiante</a></li>
-                        <li><a href="#" class="link-dark rounded">Intermedio</a></li>
-                        <li><a href="#" class="link-dark rounded">Avanzado</a></li>
+                        <li><a class="link-dark rounded" (click)="getTrainings('Espalda', 'Principiante')">Principiante</a></li>
+                        <li><a class="link-dark rounded" (click)="getTrainings('Espalda', 'Intermedio')">Intermedio</a></li>
+                        <li><a class="link-dark rounded" (click)="getTrainings('Espalda', 'Avanzado')">Avanzado</a></li>
                     </ul>
                 </div>
             </li>
             <li class="mb-1">
-                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
-                    data-bs-target="#orders-collapse" aria-expanded="false">
-                    <img src="../assets/img/Trainings/arrow.svg" class="flecha" alt="">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#arms-collapse" aria-expanded="false">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
+                        <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753 5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z"/>
+                    </svg>
                     Brazos
                 </button>
-                <div class="collapse" id="orders-collapse" style="">
+                <div class="collapse" id="arms-collapse">
                     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                        <li><a href="#" class="link-dark rounded">Principiante</a></li>
-                        <li><a href="#" class="link-dark rounded">Intermedio</a></li>
-                        <li><a href="#" class="link-dark rounded">Avanzado</a></li>
+                        <li><a class="link-dark rounded" (click)="getTrainings('Brazos', 'Principiante')">Principiante</a></li>
+                        <li><a class="link-dark rounded" (click)="getTrainings('Brazos', 'Intermedio')">Intermedio</a></li>
+                        <li><a class="link-dark rounded" (click)="getTrainings('Brazos', 'Avanzado')">Avanzado</a></li>
                     </ul>
                 </div>
             </li>
-
             <li class="mb-1">
-                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
-                    data-bs-target="#account-collapse" aria-expanded="false">
-                    <img src="../assets/img/Trainings/arrow.svg" class="flecha" alt="">
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#legs-collapse" aria-expanded="false">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
+                        <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753 5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z"/>
+                    </svg>
                     Piernas
                 </button>
-                <div class="collapse" id="account-collapse">
+                <div class="collapse" id="legs-collapse">
                     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                        <li><a href="#" class="link-dark rounded">Principiante</a></li>
-                        <li><a href="#" class="link-dark rounded">Intermedio</a></li>
-                        <li><a href="#" class="link-dark rounded">Avanzado</a></li>
+                        <li><a class="link-dark rounded" (click)="getTrainings('Piernas', 'Principiante')">Principiante</a></li>
+                        <li><a class="link-dark rounded" (click)="getTrainings('Piernas', 'Intermedio')">Intermedio</a></li>
+                        <li><a class="link-dark rounded" (click)="getTrainings('Piernas', 'Avanzado')">Avanzado</a></li>
                     </ul>
                 </div>
             </li>
-            <li class="border-top my-3"></li>
+            <li class="mb-1">
+                <button class="btn btn-toggle align-items-center rounded collapsed" (click)="getAllTrainings()">
+                    Eliminar Filtro
+                </button>
+            </li>
         </ul>
     </div>
-    <div class="container">
 
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-3 g-3">
-            <div class="col">
-                <div class="card shadow">
-                    <div class="imagen">
-                        <img src="../assets/img/Trainings/Ejercicio1.jpg" class="card-img-top" alt="...">
+    <div class="album py-5">
+        <div class="container">
+            <div class="card-active shadow" *ngIf="trainingActive.name != undefined">
+                <img src={{trainingActive.img}} alt="..." class="d-none d-md-block">
 
-                        <h5 class="encima">Ejercicio 1 </h5>
+                <button class="btn btn-close" (click)="disableDisplayTraining()">
+                </button>
 
-                    </div>
-
-                    <div class="card-body">
-
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.</p>
-                    </div>
+                <div class="card-body">
+                    <h5>{{trainingActive.name}}</h5>
+                    <p class="card-text">
+                        Dificultad: {{trainingActive.difficulty}}
+                    </p>
+                    <p class="card-text">
+                        {{trainingActive.description}}
+                    </p>
                 </div>
             </div>
-            <div class="col">
-                <div class="card shadow">
-                    <div class="imagen">
-                        <img src="../assets/img/Trainings/Ejercicio1.jpg" class="card-img-top" alt="...">
 
-                        <h5 class="encima">Ejercicio 2 </h5>
+            <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-3">
+                <ng-container *ngFor="let training of trainings; let indice = index">
 
+                    <div class="col" *ngIf="training.id != trainingActive.id">
+                        <div class="card shadow" (click)="displayTraining(indice)">
+                            <img src={{training.img}} class="card-img-top" alt="...">
+        
+                            <div class="card-body">
+                                <h5>{{training.name}}</h5>
+                                <p class="card-text">
+                                    Dificultad: {{training.difficulty}}
+                                </p>
+                            </div>
+    
+                            <p class="card-text-hover">Más información...</p>
+                        </div>
                     </div>
 
-                    <div class="card-body">
-                        <p class="card-text">This is a wider card with supporting</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card shadow">
-                    <div class="imagen">
-                        <img src="../assets/img/Trainings/Ejercicio1.jpg" class="card-img-top" alt="...">
-
-                        <h5 class="encima">Ejercicio 3 </h5>
-
-                    </div>
-
-                    <div class="card-body">
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card shadow">
-                    <div class="imagen">
-                        <img src="../assets/img/Trainings/Ejercicio1.jpg" class="card-img-top" alt="...">
-
-                        <h5 class="encima">Ejercicio 4 </h5>
-
-                    </div>
-
-                    <div class="card-body">
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.</p>
-                    </div>
-                </div>
+                </ng-container>
             </div>
         </div>
     </div>
