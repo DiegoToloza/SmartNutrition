@@ -14,6 +14,8 @@ import { ErrorComponent } from './components/error/error.component';
 import { HeaderComponent } from './subcomponents/header/header.component';
 import { FooterComponent } from './subcomponents/footer/footer.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
+import { AboutUsComponent } from './components/about-us/about-us.component';
+import { ContactComponent } from './components/contact/contact.component';
 
 
 @NgModule({
@@ -27,7 +29,9 @@ import { SignInComponent } from './components/sign-in/sign-in.component';
     ErrorComponent,
     HeaderComponent,
     FooterComponent,
-    SignInComponent
+    SignInComponent,
+    AboutUsComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
