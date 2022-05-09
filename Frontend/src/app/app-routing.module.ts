@@ -7,9 +7,10 @@ import { TrainingsComponent } from './components/trainings/trainings.component';
 import { ShopComponent } from './components/shop/shop.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
-import { ErrorComponent } from './components/error/error.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { ContactComponent } from './components/contact/contact.component';
+import { ErrorComponent } from './components/error/error.component';
+
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -22,8 +23,8 @@ const routes: Routes = [
   {path: 'tienda', component: ShopComponent},
   {path: 'login', component: LoginComponent},
   {path: 'sign-in', component: SignInComponent},
-  {path: 'about-us', component: AboutUsComponent},
-  {path: 'contact', component: ContactComponent},
+  {path: 'sobre-nosotros', component: AboutUsComponent},
+  {path: 'contacto', component: ContactComponent},
   {path: '**', component: ErrorComponent}
 ];
 
