@@ -1,51 +1,55 @@
 import { Injectable } from "@angular/core";
+import { HttpClient, HttpHeaders } from "@angular/common/http"
+import { Observable } from "rxjs";
+
 import { Diet } from "../models/diet";
+import { Global } from "./global";
 
 @Injectable()
 export class DietService {
-    private allDiets: Array<Diet>
-    private dietsNoVegans: Array<Diet>
-    private dietsVegans: Array<Diet>
+    public url: string
 
-    constructor() {
-        this.dietsNoVegans = [
-            new Diet('1234','Caballo', 'A pura agua y paja', '../../assets/imagenes de prueba/Diets/cetogenica.jpg', 'no vegana', 'texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo.'),
-            new Diet('1254', 'lorem ipsum', 'texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo', '../../assets/imagenes de prueba/Diets/cetogenica.jpg', 'no vegana', 'texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo.'),
-            new Diet('1546', 'lorem ipsum', 'texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo', '../../assets/imagenes de prueba/Diets/cetogenica.jpg', 'no vegana', 'texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo.'),
-            new Diet('4567', 'lorem ipsum', 'texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo', '../../assets/imagenes de prueba/Diets/cetogenica.jpg', 'no vegana', 'texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo.'),
-            new Diet('6542', 'lorem ipsum', 'texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo', '../../assets/imagenes de prueba/Diets/cetogenica.jpg', 'no vegana', 'texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo.')
-        ]
-
-        this.dietsVegans = [
-            new Diet('7812', 'Vegana 1', 'Sin carne', '../../assets/imagenes de prueba/Diets/cetogenica.jpg', 'vegana', 'texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo.'),
-            new Diet('1232', 'Vegana 2', 'Sin carne', '../../assets/imagenes de prueba/Diets/cetogenica.jpg', 'vegana', 'texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo.'),
-            new Diet('5647', 'Vegana 3', 'Sin carne', '../../assets/imagenes de prueba/Diets/cetogenica.jpg', 'vegana', 'texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo texto de ejemplo.')
-        ]
-
-        this.allDiets = new Array()
+    constructor(
+        private _http: HttpClient
+    ) {
+        this.url = Global.url
     }
 
-    getAllDiets(): Array<Diet> {
-        this.allDiets = this.dietsNoVegans.concat(this.dietsVegans)
-        return this.allDiets
+    saveDiet(diet: Diet): Observable <any>{
+        let params = JSON.stringify(diet)
+        let headers = new HttpHeaders().set('Content-Type', 'application/json')
+
+        return this._http.post(this.url + 'save-diet', params, {headers: headers})
+    }
+    
+    getDiet(id: string): Observable <any>{
+        let headers = new HttpHeaders().set('Content-Type', 'application/json')
+
+        return this._http.get(this.url + 'diet/' + id, {headers: headers})
     }
 
-    getDietsNoVegans(): Array<Diet> {
-        return this.dietsNoVegans
+    getDiets(): Observable <any>{
+        let headers = new HttpHeaders().set('Content-Type', 'application/json')
+
+        return this._http.get(this.url + 'diets', {headers: headers})
     }
 
-    getDietsVegans(): Array<Diet> {
-        return this.dietsVegans
+    getDietsCategory(category: string): Observable <any>{
+        let headers = new HttpHeaders().set('Content-Type', 'application/json')
+
+        return this._http.get(this.url + 'diets/' + category, {headers: headers})
     }
 
-    //Con User
+    deleteDiet(id: string): Observable <any>{
+        let headers = new HttpHeaders().set('Content-Type', 'application/json')
 
-    getMyDiets(user: any): Array<Diet> {
-        
-        if(user == null){
-            return new Array()
-        } else {
-            return user.diets
-        }
+        return this._http.delete(this.url + 'diet/' + id, {headers: headers})
+    }
+
+    updateDiet(diet: Diet): Observable <any>{
+        let params = JSON.stringify(diet)
+        let headers = new HttpHeaders().set('Content-Type', 'application/json')
+
+        return this._http.put(this.url + 'diet/' + diet._id, params, {headers: headers})
     }
 }

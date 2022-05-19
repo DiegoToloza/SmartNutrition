@@ -1,0 +1,51 @@
+<app-header-secondary></app-header-secondary>
+
+<div class="container-main body-main">
+    <div class="form">
+        <h3>{{title}}</h3>
+        
+        <form #logInForm="ngForm" (ngSubmit)="onSubmit(logInForm)" action="">
+            <div class="mb-3">
+                <label for="userName">Nombre de Usuario</label>
+                <input type="text" class="form-control" name="userName" #userName="ngModel" [(ngModel)]="logInUser.userName" placeholder="Nombre de Usuario" required>
+                <span class="form-error" *ngIf="userName.touched && !userName.valid">Nombre de usuario es obligatorio</span>
+            </div>
+            <div class="mb-3">
+                <label for="email">E-mail</label>
+                <input type="email" class="form-control" name="email" #email="ngModel" [(ngModel)]="logInUser.email" placeholder="E-mail" required>
+                <span class="form-error" *ngIf="email.touched && !email.valid">E-mail es obligatorio</span>
+            </div>
+            <div class="mb-3">
+                <label for="password">Contraseña</label>
+                <input type="password" class="form-control" name="password" #password="ngModel" [(ngModel)]="logInUser.password" placeholder="Contraseña" required>
+                <span class="form-error" *ngIf="password.touched && !password.valid">Contraseña es obligatoria</span>
+            </div>
+            <div class="mb-3">
+                <label for="passwordCheck">Confirmar Contraseña</label>
+                <input type="password" class="form-control" name="passwordCheck" #passwordCheck="ngModel" [(ngModel)]="logInUser.passwordCheck" placeholder="Confirmar Contraseña" required>
+                <span class="form-error" *ngIf="passwordCheck.touched && !passwordCheck.valid">Contraseña es obligatoria</span>
+            </div>
+
+            <input type="submit" value="Registrate" class="btn-register" [disabled]="!logInForm.form.valid">
+        </form>
+
+        <p class="register-with">o Registrate con</p>
+
+        <div class="register-with-btn">
+            <div class="btn-social btn-facebook">
+                <a>
+                    <img src="../assets/img/social_media/logo-facebook.svg" alt="">
+                    Facebook
+                </a>
+            </div>
+            <div class="btn-social btn-google">
+                <a>
+                    <img src="../assets/img/social_media/logo-google.svg" alt="">
+                    Google
+                </a>
+            </div>
+        </div>
+
+        <p class="sign-in">¿Ya tienes una cuenta? <a [routerLink]="['/iniciar-sesion']" >Inicia Sesion aquí</a></p>
+    </div>
+</div>

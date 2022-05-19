@@ -1,72 +1,66 @@
-$base-color: #f5f5f5
-$text-color-primary: #333
-$text-color-secondary: #777
-$lines-color: #ccc
-$btn-color-primary: #1EC276
-$btn-color-secondary: #1EA064
-    
 /*Header*/
 header
-    background-color: $base-color
+    background: #f5f5f5
 
-    .nav-header
-        width: 80%
-        margin: 0px auto
-        border-bottom: 1px solid $lines-color
-
+    .navbar
+        border-bottom: 1px solid #ccc
+        
         .logo
             display: flex
             font-family: 'Oxanium', Arial, Helvetica, sans-serif
-            font-size: 1.5rem
-            color: $text-color-primary
+            font-size: 1.5em
+            color: #333
             letter-spacing: 1.5px
+            align-items: center
+            margin: 0
 
-            .title-collapsed
+            img
+                width: 36px
+
+        .navbar-nav
+            .nav-link
+                color: #777
+                padding: 0.5em 0.75em
+                text-align: center
+                border-bottom: 1px solid #f5f5f5
+
+                &:hover
+                    color: #333
+
+            .active_
+                color: #333
+                border-bottom: 1px solid #1EC276
+
+            .disabled_
                 display: none
-
-        .nav-link
-            color: $text-color-secondary
-            padding: 0.5rem 0.75rem
-            text-align: center
-            border-bottom: 2px solid $base-color
-
-            &:hover
-                color: $text-color-primary
-
-        .active_
-            color: $text-color-primary
-            border-bottom: 2px solid $btn-color-primary
-
-        .disabled_
-            display: none
 
         .btn
             transition: all 200ms
-            font-size: 0.9rem
+            font-size: 0.9em
 
             &:focus
                 outline: none
                 box-shadow: none
 
-        .btn-login
-            color: $btn-color-primary
-            border-color: $btn-color-primary
-
-            &:hover
-                color: $base-color
-                background-color: $btn-color-primary
-
-        .btn-sign-up
-            color: $base-color
-            background-color: $btn-color-primary
-            border-color: $btn-color-primary
-
-            &:hover
-                background-color: $btn-color-secondary
-                border-color: $btn-color-secondary
-
         .login
             display: block
+
+            .btn-sign-in
+                color: #1EC276
+                border-color: #1EC276
+
+                &:hover
+                    color: #f5f5f5
+                    background: #1EC276
+
+            .btn-login
+                color: #f5f5f5
+                background: #1EC276
+                border-color: #1EC276
+
+                &:hover
+                    background: #1EA064
+                    border-color: #1EA064
         
         .dropdown
             width: 210px
@@ -76,21 +70,21 @@ header
             a
                 padding: 0
                 border: 0
-                background: $base-color
+                background: #f5f5f5
 
                 img
                     margin-right: 10px
                     border-radius: 999px
-                    border: 2px solid $btn-color-primary
+                    border: 2px solid #1EC276
 
             li
                 a
-                    color: $text-color-secondary
+                    color: #777
                     background: #fff
                     padding: 2.5px 10px
 
                     &:hover
-                        color: $text-color-primary
+                        color: #333
 
                 .log-out
                     color: red
@@ -103,19 +97,10 @@ header
 
 @media only screen and (max-width: 991px)
     header
-        .nav-header
-            .disabled_
-                display: block
+        .navbar
+            .navbar-nav
+                .disabled_
+                    display: block
 
             .login
                 display: none
-
-@media only screen and (max-width: 450px)
-    header
-        .nav-header
-            .logo
-                .title
-                    display: none
-                
-                .title-collapsed
-                    display: block

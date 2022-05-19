@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 import { Training } from 'src/app/models/training';
 import { TrainingService } from 'src/app/services/training.service';
+import { Global } from 'src/app/services/global';
 
 @Component({
   selector: 'app-trainings',
@@ -11,39 +13,74 @@ import { TrainingService } from 'src/app/services/training.service';
 })
 export class TrainingsComponent implements OnInit {
   public trainings: Array<Training>
-  public trainingActive: Training
+  public url: string
 
   constructor(
-    private _TrainingService: TrainingService
+    private _TrainingService: TrainingService,
+    private _route: ActivatedRoute
   ) { 
     this.trainings = new Array()
-    this.trainingActive = new Training()
+    this.url = Global.url
    }
 
   ngOnInit(): void {
-    this.getAllTrainings()
-  }
+    //crear las rutas relativas como en las dietas
+    this._route.params.subscribe(params => {
+      if(params['category'] && params['difficulty']){
+        let category = params['category']
+        let difficulty = params['difficulty']
 
-  getAllTrainings() {
-    this.trainings = this._TrainingService.getAllTrainings()
-  }
+        category = category.replace(/(?:^|\s)\S/g, (res:any) => { return res.toUpperCase()})
+        difficulty = difficulty.replace(/(?:^|\s)\S/g, (res:any) => { return res.toUpperCase()})
 
-  getTrainings(category: string, difficulty: string) {
-    this.trainingActive = new Training
-    this.trainings = this._TrainingService.getTrainings(category, difficulty)
-  }
+        this.getTrainingsCategoryDifficulty(category, difficulty)
+      }else if(params['category']){
+        let category = params['category']
+        category = category.replace(/(?:^|\s)\S/g, (res:any) => { return res.toUpperCase()})
 
-  displayTraining(indice: any) {
-    this.trainingActive = this.trainings[indice]
-    window.scroll({
-      top: 0,
-      left: 0,
-      behavior: 'smooth'
+        this.getTrainingsCategory(category)
+      }else{
+        this.getTrainings()
+      }
     })
   }
 
-  disableDisplayTraining() {
-    this.trainingActive = new Training()
+  getTrainings(){
+    this._TrainingService.getTrainings().subscribe(
+      response => {
+        if(response.trainings){
+          this.trainings = response.trainings
+        }
+      },
+      error => {
+        console.log(<any>error)
+      }
+    )
   }
 
+  getTrainingsCategory(category: string){
+    this._TrainingService.getTrainingsCategory(category).subscribe(
+      response => {
+        if(response.trainings){
+          this.trainings = response.trainings
+        }
+      },
+      error => {
+        console.log(<any>error)
+      }
+    )
+  }
+
+  getTrainingsCategoryDifficulty(category: string, difficulty: string){
+    this._TrainingService.getTrainingsCategoryDifficulty(category, difficulty).subscribe(
+      response => {
+        if(response.trainings){
+          this.trainings = response.trainings
+        }
+      },
+      error => {
+        console.log(<any>error)
+      }
+    )
+  }
 }

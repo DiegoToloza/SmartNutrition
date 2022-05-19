@@ -7,13 +7,11 @@ $btn-color-secondary: #1EA064
     
 /*footer*/
 .footer-main
-    width: 80%
-    margin: 0px auto
-    padding-right: 0.75rem
-    padding-left: 0.75rem
+    padding-right: 0.75em
+    padding-left: 0.75em
 
     .footer-sec-1
-        border-bottom: 1px solid $lines-color
+        border-bottom: 1px solid #ccc
 
         .col
             max-width: 300px
@@ -21,7 +19,7 @@ $btn-color-secondary: #1EA064
             .logo
                 display: flex
                 font-family: 'Oxanium', Arial, Helvetica, sans-serif
-                font-size: 1.3rem
+                font-size: 1.3em
                 color: $text-color-primary
                 letter-spacing: 1.5px
 
@@ -29,8 +27,8 @@ $btn-color-secondary: #1EA064
                     display: none
 
             p
-                margin: 0.75rem 0
-                font-size: 0.815rem
+                margin: 0.75em 0
+                font-size: 0.815em
 
         .col-perso
             flex: 0 0 auto
@@ -38,7 +36,7 @@ $btn-color-secondary: #1EA064
 
             .nav-link
                 color: $text-color-secondary
-                font-size: 0.9rem
+                font-size: 0.9em
 
                 &:hover
                     color: $text-color-primary
@@ -47,11 +45,17 @@ $btn-color-secondary: #1EA064
         align-items: center
 
         span
-            font-size: 0.95rem
+            font-size: 0.95em
             color: $text-color-secondary
 
         .social-media
             align-items: center
+
+            .social-media-icon
+                transition: all 400ms
+
+                &:hover
+                    transform: translateY(-5px)
 
             p
                 margin: 0

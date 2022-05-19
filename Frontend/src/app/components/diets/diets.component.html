@@ -1,57 +1,49 @@
-<div class="contenedor">
+<app-header></app-header>
+
+<div class="container-main body-main">
     <nav>
         <ul class="nav justify-content-center">
             <li class="nav-item">
-                <a class="nav-link" [routerLink]="['/dietas/no-veganas']" [routerLinkActive]="['active_']">Dietas No Veganas</a>
+                <a class="nav-link" [routerLink]="['/dietas/no-vegana']" [routerLinkActive]="['active_']">No Veganas</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" [routerLink]="['/dietas/veganas']" [routerLinkActive]="['active_']">Dietas Veganas</a>
+                <a class="nav-link" [routerLink]="['/dietas/vegana']" [routerLinkActive]="['active_']">Veganas</a>
             </li>
-            <li class="nav-item" *ngIf="userExist()">
+            <!--
+            <li class="nav-item">
                 <a class="nav-link" [routerLink]="['/dietas/mis-dietas']" [routerLinkActive]="['active_']">Tus Dietas</a>
             </li>
+            -->
         </ul>
     </nav>
 
     <div class="album py-3">
-        <div class="container">
-
-            <div class="card-active shadow" *ngIf="dietActive.name != undefined">
-                <div class="image">
-                    <img src={{dietActive.img}} alt="...">
-                    <h3>{{dietActive.name}}</h3>
-                    <button class="btn btn-close" (click)="disableDisplayDiet()">
-                    </button>
-                </div>
-                <div class="card-body">
-                    <p class="card-text">
-                        {{dietActive.descriptionExpanded}}
-                    </p>
-                </div>
-            </div>
-            
+        <div class="container">            
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3" id="album-diets">
-                <ng-container *ngFor="let diet of diets; let indice = index">
-
-                    <div class="col" *ngIf="diet.id != dietActive.id">
-                        <div class="card shadow" (click)="displayDiet(indice)">
-                            <div class="image">
-                                <img src={{diet.img}} class="card-img-top" alt="...">
-                                <h5>{{diet.name}}</h5>
+                <ng-container *ngFor="let diet of diets;">
+                    
+                    <a href="#">
+                        <div class="col">
+                            <div class="card shadow">
+                                <div class="image">
+                                    <img src="{{url + 'diet/get-image/' + diet.image}}" class="card-img-top" alt="...">
+                                    <h5>{{diet.name}}</h5>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text">
+                                        {{diet.description}}
+                                    </p>
+                                </div>
+        
+                                <p class="card-text-hover">Más información...</p>
                             </div>
-                            <div class="card-body">
-                                <p class="card-text">
-                                    {{diet.description}}
-                                </p>
-                            </div>
-    
-                            <p class="card-text-hover">Más información...</p>
                         </div>
-                    </div>
+                    </a>
 
                 </ng-container>               
             </div>
         </div>
     </div>
-
 </div>
+
+<app-footer></app-footer>

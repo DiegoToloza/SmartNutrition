@@ -1,6 +1,8 @@
-<div class="contenedor">
+<app-header></app-header>
+
+<div class="container-main body-main">
     <div class="categorias py-3">
-        <h4>Categorías</h4>
+        <h5>Categorías</h5>
         <ul class="list-unstyled ps-0">
             <li class="mb-1">
                 <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#chest-collapse" aria-expanded="false">
@@ -11,9 +13,9 @@
                 </button>
                 <div class="collapse" id="chest-collapse">
                     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                        <li><a class="link-dark rounded" (click)="getTrainings('Pecho', 'Principiante')">Principiante</a></li>
-                        <li><a class="link-dark rounded" (click)="getTrainings('Pecho', 'Intermedio')">Intermedio</a></li>
-                        <li><a class="link-dark rounded" (click)="getTrainings('Pecho', 'Avanzado')">Avanzado</a></li>
+                        <li><a class="link-dark rounded" [routerLink]="['/ejercicios/pecho/principiante']">Principiante</a></li>
+                        <li><a class="link-dark rounded" [routerLink]="['/ejercicios/pecho/intermedio']">Intermedio</a></li>
+                        <li><a class="link-dark rounded" [routerLink]="['/ejercicios/pecho/avanzado']">Avanzado</a></li>
                     </ul>
                 </div>
             </li>
@@ -26,9 +28,9 @@
                 </button>
                 <div class="collapse" id="back-collapse">
                     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                        <li><a class="link-dark rounded" (click)="getTrainings('Espalda', 'Principiante')">Principiante</a></li>
-                        <li><a class="link-dark rounded" (click)="getTrainings('Espalda', 'Intermedio')">Intermedio</a></li>
-                        <li><a class="link-dark rounded" (click)="getTrainings('Espalda', 'Avanzado')">Avanzado</a></li>
+                        <li><a class="link-dark rounded" [routerLink]="['/ejercicios/espalda/principiante']">Principiante</a></li>
+                        <li><a class="link-dark rounded" [routerLink]="['/ejercicios/espalda/intermedio']">Intermedio</a></li>
+                        <li><a class="link-dark rounded" [routerLink]="['/ejercicios/espalda/avanzado']">Avanzado</a></li>
                     </ul>
                 </div>
             </li>
@@ -41,9 +43,9 @@
                 </button>
                 <div class="collapse" id="arms-collapse">
                     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                        <li><a class="link-dark rounded" (click)="getTrainings('Brazos', 'Principiante')">Principiante</a></li>
-                        <li><a class="link-dark rounded" (click)="getTrainings('Brazos', 'Intermedio')">Intermedio</a></li>
-                        <li><a class="link-dark rounded" (click)="getTrainings('Brazos', 'Avanzado')">Avanzado</a></li>
+                        <li><a class="link-dark rounded" [routerLink]="['/ejercicios/brazos/principiante']">Principiante</a></li>
+                        <li><a class="link-dark rounded" [routerLink]="['/ejercicios/brazos/intermedio']">Intermedio</a></li>
+                        <li><a class="link-dark rounded" [routerLink]="['/ejercicios/brazos/avanzado']">Avanzado</a></li>
                     </ul>
                 </div>
             </li>
@@ -56,14 +58,14 @@
                 </button>
                 <div class="collapse" id="legs-collapse">
                     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                        <li><a class="link-dark rounded" (click)="getTrainings('Piernas', 'Principiante')">Principiante</a></li>
-                        <li><a class="link-dark rounded" (click)="getTrainings('Piernas', 'Intermedio')">Intermedio</a></li>
-                        <li><a class="link-dark rounded" (click)="getTrainings('Piernas', 'Avanzado')">Avanzado</a></li>
+                        <li><a class="link-dark rounded" [routerLink]="['/ejercicios/piernas/principiante']">Principiante</a></li>
+                        <li><a class="link-dark rounded" [routerLink]="['/ejercicios/piernas/intermedio']">Intermedio</a></li>
+                        <li><a class="link-dark rounded" [routerLink]="['/ejercicios/piernas/avanzado']">Avanzado</a></li>
                     </ul>
                 </div>
             </li>
             <li class="mb-1">
-                <button class="btn btn-toggle align-items-center rounded collapsed" (click)="getAllTrainings()">
+                <button class="btn btn-toggle align-items-center rounded collapsed dlt-filter" [routerLink]="['/ejercicios']">
                     Eliminar Filtro
                 </button>
             </li>
@@ -72,43 +74,32 @@
 
     <div class="album py-5">
         <div class="container">
-            <div class="card-active shadow" *ngIf="trainingActive.name != undefined">
-                <img src={{trainingActive.img}} alt="..." class="d-none d-md-block">
+            <div class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-3">
+                <ng-container *ngFor="let training of trainings">
 
-                <button class="btn btn-close" (click)="disableDisplayTraining()">
-                </button>
-
-                <div class="card-body">
-                    <h5>{{trainingActive.name}}</h5>
-                    <p class="card-text">
-                        Dificultad: {{trainingActive.difficulty}}
-                    </p>
-                    <p class="card-text">
-                        {{trainingActive.description}}
-                    </p>
-                </div>
-            </div>
-
-            <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-3">
-                <ng-container *ngFor="let training of trainings; let indice = index">
-
-                    <div class="col" *ngIf="training.id != trainingActive.id">
-                        <div class="card shadow" (click)="displayTraining(indice)">
-                            <img src={{training.img}} class="card-img-top" alt="...">
+                    <a href="#">
+                        <div class="col">
+                            <div class="card shadow">
+                                <div class="image">
+                                    <img src="{{url + 'training/get-image/' + training.image}}" class="card-img-top" alt="...">
+                                </div>
+                                
+                                <div class="card-body">
+                                    <h5>{{training.name}}</h5>
+                                    <p class="card-text">
+                                        Dificultad: {{training.difficulty}}
+                                    </p>
+                                </div>
         
-                            <div class="card-body">
-                                <h5>{{training.name}}</h5>
-                                <p class="card-text">
-                                    Dificultad: {{training.difficulty}}
-                                </p>
+                                <p class="card-text-hover">Más información...</p>
                             </div>
-    
-                            <p class="card-text-hover">Más información...</p>
                         </div>
-                    </div>
+                    </a>
 
                 </ng-container>
             </div>
         </div>
     </div>
 </div>
+
+<app-footer></app-footer>
