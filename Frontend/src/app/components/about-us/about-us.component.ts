@@ -6,8 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./about-us.component.sass']
 })
 export class AboutUsComponent implements OnInit {
+  public title: string
 
-  constructor() { }
+  constructor() { 
+    this.title = "Exercitation veniam consequat sunt nostrud amet."
+  }
 
   ngOnInit(): void {
   }

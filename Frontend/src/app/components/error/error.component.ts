@@ -17,6 +17,6 @@ export class ErrorComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.numberImage = Math.floor(Math.random() * 5) + 1
+    this.numberImage = Math.floor(Math.random() * 10) + 1
   }
 }
