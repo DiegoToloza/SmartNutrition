@@ -6,8 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./footer.component.sass']
 })
 export class FooterComponent implements OnInit {
+  public title: string
 
-  constructor() { }
+  constructor() { 
+    this.title = 'SmartNutrition'
+  }
 
   ngOnInit(): void { }
 

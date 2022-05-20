@@ -1,27 +1,31 @@
-<div class="contacto">
-    <form>
-        <h2>Contacto</h2>
-        <div class="mb-3">
-            <label for="Usuario" class="form-label"><b>Nombre*</b></label>
-            <input type="text" class="form-control" placeholder="Ingresa tu Nombre" id="Usuario">
-        </div>
-         <div class="mb-3">
-            <label for="Email" class="form-label"><b>E-mail*</b></label>
-            <input type="email" class="form-control" placeholder="Ingresa tu E-mail" id="Email" aria-describedby="emailHelp">
-        </div>
-        <div class="mb-3">
-            <label for="Telefono" class="form-label"><b>Teléfono</b></label>
-            <input type="tel" class="form-control" placeholder="Ingresa tu Teléfono" id="Telefono">
-        </div>
-        <div class="mb-3">
-            <label for="Asunto" class="form-label"><b>Asunto</b></label>
-            <input type="text" class="form-control" placeholder="Escribe el asunto del contacto" id="Asunto">
-        </div>
-        <div class="mb-3">
-            <label for="Mensaje" class="form-label"><b>Mensaje</b></label>
-            <textarea type="text" style="height: 134px;" maxlength="1000" class="form-control" placeholder="Mensaje" id="Mensaje"></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary">Enviar</button>
+<app-header-secondary></app-header-secondary>
 
-    </form>
+<div class="container-main body-main">
+    <div class="form">
+        <h3>{{title}}</h3>
+
+        <form #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm)" action="">
+            <div class="mb-3">
+                <label for="name">Nombre</label>
+                <input type="text" class="form-control" name="name" #name="ngModel" [(ngModel)]="contactUser.name" placeholder="Nombre" required>
+                <span class="form-error" *ngIf="name.touched && !name.valid">Nombre es obligatorio</span>
+            </div>
+            <div class="mb-3">
+                <label for="email">E-mail</label>
+                <input type="email" class="form-control" name="email" #email="ngModel" [(ngModel)]="contactUser.email" placeholder="E-mail" required>
+                <span class="form-error" *ngIf="email.touched && !email.valid">E-mail es obligatorio</span>
+            </div>
+            <div class="mb-3">
+                <label for="topic">Asunto</label>
+                <input type="text" class="form-control" name="topic" #topic="ngModel" [(ngModel)]="contactUser.topic" placeholder="Asunto" required>
+                <span class="form-error" *ngIf="topic.touched && !topic.valid">Asunto es obligatorio</span>
+            </div>
+            <div class="mb-3">
+                <label for="message">Mensaje</label>
+                <textarea type="text" class="form-control" name="message" #message="ngModel" [(ngModel)]="contactUser.message" placeholder="Mensaje"></textarea>
+            </div>
+            
+            <input type="submit" value="Enviar" class="btn-enviar" [disabled]="!contactForm.form.valid">
+        </form>
+    </div>
 </div>

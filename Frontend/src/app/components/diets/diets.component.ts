@@ -1,73 +1,66 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 import { Diet } from 'src/app/models/diet';
 import { DietService } from 'src/app/services/diet.service';
-import { UserService } from 'src/app/services/user.service';
+import { Global } from 'src/app/services/global';
 
 
 @Component({
   selector: 'app-diets',
   templateUrl: './diets.component.html',
   styleUrls: ['./diets.component.sass'],
-  providers: [DietService, UserService]
+  providers: [DietService]
 })
 export class DietsComponent implements OnInit {
   public diets: Array<Diet>
-  public dietActive: Diet
+  public url: string
 
   constructor(
-    private router: Router,
-    private _DietService: DietService,
-    private _UserService: UserService
+    private _dietService: DietService,
+    private _route: ActivatedRoute
   ) {
     this.diets = new Array()
-    this.dietActive = new Diet()
+    this.url = Global.url
   }
 
   ngOnInit(): void {
-    if (this.router.url == '/dietas') {
-      this.getAllDiets()
-    }else if (this.router.url == '/dietas/no-veganas') {
-      this.getDietsNoVegans()
-    }else if(this.router.url == '/dietas/veganas'){
-      this.getDietsVegans()
-    }else if(this.router.url == '/dietas/mis-dietas'){
-      this.getMyDiets()
-    }
-  }
-
-  getAllDiets() {
-    this.diets = this._DietService.getAllDiets()
-  }
-
-  getDietsNoVegans() {
-    this.diets = this._DietService.getDietsNoVegans()
-  }
-
-  getDietsVegans() {
-    this.diets = this._DietService.getDietsVegans()
-  }
-
-  getMyDiets() {
-    this.diets = this._DietService.getMyDiets(this._UserService.getUser())
-    console.log(this._UserService.getUser())
-  }
-
-  displayDiet(indice: any) {
-    this.dietActive = this.diets[indice]
-    window.scroll({
-      top: 0,
-      left: 0,
-      behavior: 'smooth'
+    this._route.params.subscribe(params => {
+      if(params['category']){
+        let category = params['category']
+        category = category.replace('-', ' ')
+        category = category.replace(/(?:^|\s)\S/g, (res:any) => { return res.toUpperCase()})
+        
+        this.getDietsCategory(category)
+      }else{
+        this.getDiets()
+      }
     })
   }
 
-  disableDisplayDiet() {
-    this.dietActive = new Diet()
+  getDiets(){
+    this._dietService.getDiets().subscribe(
+      response => {
+        if(response.diets){
+          this.diets = response.diets
+        }
+      },
+      error => {
+        console.log(<any>error)
+      }
+    )
   }
 
-  userExist() {
-    return this._UserService.userExist()
+  getDietsCategory(category: string){
+    this._dietService.getDietsCategory(category).subscribe(
+      response => {
+        if(response.diets){
+          this.diets = response.diets
+        }
+      },
+      error => {
+        console.log(<any>error)
+      }
+    )
   }
 }

@@ -1,10 +1,12 @@
 # SmartNutrition
+La aplicacion web ocupa Angular cli - NodeJs - MongoDB para Frontend - Backend - Base de Datos respectivamente.
 
-Para ejecutar la aplicación, se debe posicionar en la carpeta "Frontend", y mediante Node.js, ejecutar el comando "ng serve".
+Para ejecutar la aplicación:
+1.- Se debe crear una database en el Host "localhost:27017" en MongoDB con el nombre "smart_nutrition", agregar las colecciones "diets" y "trainings", y cargar los datos que estan en la carpeta "Data".
+2.- Se debe ejecutar el Backend con el comando "npm start" posicionandose en la carpeta "Backend".
+3.- Se debe ejecutar el Frontend con el comando "ng serve" posicionandose en la carpeta "Frontend".
 
-Cuando la aplicación se conecte a una base de datos
-estarán disponibles las siguientes funcionalidades:
-
+Las funcionalidades son:
 1.- Creación de usuarios: Se crea un usuario con los atributos "Nombre","E-mail","Contraseña", y se almacenan en la base de datos, generando un id propio.
 2.- Creación de Dietas Personalizadas: Al haber iniciado sesión, el usuario podrá crear sus propias dietas, las que se almacenaran en la base de datos asociandolas al id del usuario
 3.- Creación de listas de ejercicios: Al haber iniciado sesión, el usuario podrá crear sus propias rutinas de ejercicios, usando los que dispone la aplicación web. Estas listas se almacenaran en la base de datos asociandolas al id del usuario

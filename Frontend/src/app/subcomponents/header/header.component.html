@@ -1,9 +1,10 @@
-<header class="fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-light nav-header">
-        <div class="container-fluid" *ngIf="userExist(); then logeado else noLogeado">
+<header class="fixed-top container-main">
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid" *ngIf="false; then logeado else noLogeado">
 
         </div>
-
+        <ng-template #logeado></ng-template>
+        <!--
         <ng-template #logeado>
             <a class="navbar-brand logo" [routerLink]="['/inicio']">
                 <img src="../assets/img/running.svg" alt="Logo" width="36">
@@ -37,22 +38,22 @@
                     <li><a class="dropdown-item" [routerLink]="['/dietas/mis-dietas']">Mis Dietas</a></li>
                     <li><a class="dropdown-item" href="#">Mis Ejercicios</a></li>
                     <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item log-out" (click)="logOutUser()">Cerrar Sesión</a></li>
+                    <li><a class="dropdown-item log-out">Cerrar Sesión</a></li>
                 </ul>
             </div>
         </ng-template>
+        -->
 
         <ng-template #noLogeado>
             <a class="navbar-brand logo" [routerLink]="['/inicio']">
-                <img src="../assets/img/running.svg" alt="Logo" width="36">
-                <div class="title">SmartNutrition</div>
-                <div class="title-collapsed">SN</div>
+                <img src="../assets/img/running.svg" alt="Logo">
+                <div class="title">{{title}}</div>
             </a>
 
             <button class="btn navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
                 aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+                <span>menu</span>
             </button>
 
             <div class="collapse navbar-collapse justify-content-center" id="navbarNavAltMarkup">
@@ -61,13 +62,13 @@
                     <a class="nav-link" [routerLink]="['/dietas']" [routerLinkActive]="['active_']">Dietas</a>
                     <a class="nav-link" [routerLink]="['/ejercicios']" [routerLinkActive]="['active_']">Ejercicios</a>
                     <a class="nav-link" [routerLink]="['/tienda']" [routerLinkActive]="['active_']">Tienda</a>
-                    <a class="nav-link disabled_" href="#">Iniciar Sesión</a>
+                    <a class="nav-link disabled_" [routerLink]="['/iniciar-sesion']">Iniciar Sesión</a>
                 </div>
             </div>
 
             <div class="login">
-                <button type="button" class="btn btn-outline-primary me-2 btn-login" [routerLink]="['/sign-in']">Identifícate</button>
-                <button type="button" class="btn btn-primary btn-sign-up" [routerLink]="['/login']">Regístrate</button>
+                <button type="button" class="btn btn-outline-primary me-2 btn-sign-in" [routerLink]="['/iniciar-sesion']">Identifícate</button>
+                <button type="button" class="btn btn-primary btn-login" [routerLink]="['/registrarse']">Regístrate</button>
             </div>
         </ng-template>
     </nav>
