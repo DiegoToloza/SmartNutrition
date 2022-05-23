@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { HomeComponent } from './components/home/home.component';
 import { DietsComponent } from './components/diets/diets.component';
+import { DietCreateComponent } from './components/diet-create/diet-create.component';
 import { TrainingsComponent } from './components/trainings/trainings.component';
 import { ShopComponent } from './components/shop/shop.component';
 import { LogInComponent } from './components/log-in/log-in.component';
@@ -17,6 +18,7 @@ const routes: Routes = [
   {path: 'inicio', component: HomeComponent},
   {path: 'dietas', component: DietsComponent},
   {path: 'dietas/:category', component: DietsComponent},
+  {path: 'dieta/agregar-dieta', component: DietCreateComponent},
   {path: 'ejercicios', component: TrainingsComponent},
   {path: 'ejercicios/:category', component: TrainingsComponent},
   {path: 'ejercicios/:category/:difficulty', component: TrainingsComponent},

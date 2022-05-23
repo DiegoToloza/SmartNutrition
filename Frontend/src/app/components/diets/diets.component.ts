@@ -15,6 +15,7 @@ import { Global } from 'src/app/services/global';
 export class DietsComponent implements OnInit {
   public diets: Array<Diet>
   public url: string
+  public addDiet: boolean
 
   constructor(
     private _dietService: DietService,
@@ -22,6 +23,7 @@ export class DietsComponent implements OnInit {
   ) {
     this.diets = new Array()
     this.url = Global.url
+    this.addDiet = true
   }
 
   ngOnInit(): void {
@@ -32,6 +34,7 @@ export class DietsComponent implements OnInit {
         category = category.replace(/(?:^|\s)\S/g, (res:any) => { return res.toUpperCase()})
         
         this.getDietsCategory(category)
+        this.addDiet = false
       }else{
         this.getDiets()
       }

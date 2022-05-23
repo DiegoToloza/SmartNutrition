@@ -1,0 +1,52 @@
+<app-header></app-header>
+
+<div class="container-main body-main">
+    <h3>{{title}}</h3>
+
+    <div class="message success" *ngIf="status == 'success'">
+        La dieta se ha creador correctamente, puedes <a href="">verla aquí.</a>
+    </div>
+    <div class="message failed" *ngIf="status == 'failed'">
+        La dieta NO se ha podido crear.
+    </div>
+
+    <div class="form">
+        <form #dietForm="ngForm" (ngSubmit)="onSubmit(dietForm)" action="">
+            <div class="mb-3">
+                <label for="name">Nombre</label>
+                <input type="text" class="form-control" name="name" #name="ngModel" [(ngModel)]="diet.name" placeholder="Nombre" required>
+                <span class="form-error" *ngIf="name.touched && !name.valid">Nombre de la dieta es obligatoria</span>
+            </div>
+            <div class="mb-3">
+                <label>Categoria</label>
+
+                <input type="radio" id="no-vegan" value="No Vegana" name="category" #category="ngModel" [(ngModel)]="diet.category" required>
+                <label for="no-vegan" class="radio">No Vegana</label> 
+                
+                <br>
+
+                <input type="radio" id="vegan" value="Vegana" name="category" #category="ngModel" [(ngModel)]="diet.category" required>
+                <label for="vegan" class="radio">Vegana</label>
+                
+                <span class="form-error" *ngIf="!category.valid">Categoria es obligatoria</span>
+            </div>
+            <div class="mb-3">
+                <label for="description">Descripción</label>
+                <textarea type="text" class="form-control" name="description" #description="ngModel" [(ngModel)]="diet.description" placeholder="Descripción breve"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="conten">Contenido Completo</label>
+                <textarea type="text" class="form-control" name="content" #content="ngModel" [(ngModel)]="diet.content" placeholder="Contenido completo sobre la dieta"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="image">Imagen de la dieta</label>
+
+                <input type="file" name="image" placeholder="Subir imagen" (change)="fileChangeEvent($event)">
+            </div>
+
+            <input type="submit" value="Enviar" class="btn-enviar" [disabled]="!dietForm.form.valid">
+        </form>
+    </div>
+</div>
+
+<app-footer></app-footer>

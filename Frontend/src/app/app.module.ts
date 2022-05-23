@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 
 import { HomeComponent } from './components/home/home.component';
 import { DietsComponent } from './components/diets/diets.component';
+import { DietCreateComponent } from './components/diet-create/diet-create.component';
 import { TrainingsComponent } from './components/trainings/trainings.component';
 import { ShopComponent } from './components/shop/shop.component';
 import { LogInComponent } from './components/log-in/log-in.component';
@@ -25,6 +26,7 @@ import { FooterComponent } from './subcomponents/footer/footer.component';
     AppComponent,
     HomeComponent,
     DietsComponent,
+    DietCreateComponent,
     TrainingsComponent,
     ShopComponent,
     LogInComponent,

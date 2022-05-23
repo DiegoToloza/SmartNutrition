@@ -20,6 +20,19 @@
     <div class="album py-3">
         <div class="container">            
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3" id="album-diets">
+
+                <a [routerLink]="['/dieta/agregar-dieta']" *ngIf="addDiet">
+                    <div class="col">
+                        <div class="card shadow">
+                            <div class="card-body add-diet">
+                                <img src="../assets/img/diets/plus-circle-dotted.svg" alt="Agregar una dieta">
+                            </div>
+
+                            <p class="card-text-hover">Agregar una dieta.</p>
+                        </div>
+                    </div>
+                </a>
+
                 <ng-container *ngFor="let diet of diets;">
                     
                     <a href="#">
