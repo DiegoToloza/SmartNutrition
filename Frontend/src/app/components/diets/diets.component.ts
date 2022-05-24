@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { Diet } from 'src/app/models/diet';
-import { DietService } from 'src/app/services/diet.service';
+import { DietService } from 'src/app/services/diet/diet.service';
 import { Global } from 'src/app/services/global';
 
 

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { Training } from 'src/app/models/training';
-import { TrainingService } from 'src/app/services/training.service';
+import { TrainingService } from 'src/app/services/training/training.service';
 import { Global } from 'src/app/services/global';
 
 @Component({

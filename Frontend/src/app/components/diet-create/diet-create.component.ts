@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Form } from '@angular/forms';
 
 import { Diet } from 'src/app/models/diet';
-import { DietService } from 'src/app/services/diet.service';
-import { UploadService } from 'src/app/services/upload.service';
+import { DietService } from 'src/app/services/diet/diet.service';
+import { UploadService } from 'src/app/services/upload/upload.service';
 import { Global } from 'src/app/services/global';
 
 @Component({

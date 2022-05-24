@@ -14,7 +14,7 @@ import { ErrorComponent } from './components/error/error.component';
 
 
 const routes: Routes = [
-  {path: '', component: HomeComponent},
+  {path: '', redirectTo: '/inicio', pathMatch: 'full'},
   {path: 'inicio', component: HomeComponent},
   {path: 'dietas', component: DietsComponent},
   {path: 'dietas/:category', component: DietsComponent},
