@@ -30,7 +30,13 @@
             <p>{{training.content}}</p>
 
             <!-- Video url -->
-            
+            <youtube-player
+                videoId="{{idVideo}}"
+                suggestedQuality="default"
+                [width]="500"
+                [showBeforeIframeApiLoads]="false"
+                *ngIf="training.urlVideo"
+            ></youtube-player>
         </div>
     </div>
 </div>

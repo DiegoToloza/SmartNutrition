@@ -15,6 +15,7 @@ import { Global } from 'src/app/services/global';
 export class TrainingComponent implements OnInit {
   public url: string
   public training: Training
+  public idVideo: string
 
   constructor(
     private _trainingService: TrainingService,
@@ -24,6 +25,7 @@ export class TrainingComponent implements OnInit {
   ) { 
     this.url = Global.url
     this.training = new Training('','','','','','','')
+    this.idVideo = ''
   }
 
   ngOnInit(): void {
@@ -31,13 +33,24 @@ export class TrainingComponent implements OnInit {
       let id = params['id']
 
       this.getTraining(id)
+
+      const tag = document.createElement('script')
+      tag.src = "https://www.youtube.com/iframe_api"
+      document.body.appendChild(tag)
     })
+  }
+
+  getIdVideo() {
+    var urlSplit = this.training.urlVideo.split('=')
+    this.idVideo = urlSplit[1]
   }
 
   getTraining(id: string) {
     this._trainingService.getTraining(id).subscribe(
       response => {
         this.training = response.training
+        
+        this.getIdVideo()
       }
     )
   }
