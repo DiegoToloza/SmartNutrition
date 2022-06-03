@@ -1,33 +1,33 @@
 import { Component, OnInit } from '@angular/core';
 import { Form } from '@angular/forms';
 
-import { Diet } from 'src/app/models/diet';
-import { DietService } from 'src/app/services/diet/diet.service';
+import { Training } from 'src/app/models/training';
+import { TrainingService } from 'src/app/services/training/training.service';
 import { UploadService } from 'src/app/services/upload/upload.service';
 import { Global } from 'src/app/services/global';
 
 @Component({
-  selector: 'app-diet-create',
-  templateUrl: './diet-create.component.html',
-  styleUrls: ['./diet-create.component.sass'],
-  providers: [DietService, UploadService]
+  selector: 'app-training-create',
+  templateUrl: './training-create.component.html',
+  styleUrls: ['./training-create.component.sass'],
+  providers: [TrainingService, UploadService]
 })
-export class DietCreateComponent implements OnInit {
+export class TrainingCreateComponent implements OnInit {
   public title: string
   public status: string
-  public diet: Diet
-  public save_diet: Diet
+  public training: Training
+  public save_training: Training
   public filesToUpload: Array<File>
   public url: string
 
   constructor(
-    private _dietService: DietService,
+    private _trainingService: TrainingService,
     private _uploadService: UploadService
-  ) {
-    this.title = 'Crear Dieta'
+  ) { 
+    this.title = 'Crear Ejercicio'
     this.status = ''
-    this.diet = new Diet('','','','','','')
-    this.save_diet = new Diet('','','','','','')
+    this.training = new Training('','','','','','','')
+    this.save_training = new Training('','','','','','','')
     this.filesToUpload = new Array()
     this.url = Global.url
   }
@@ -36,19 +36,19 @@ export class DietCreateComponent implements OnInit {
   }
 
   onSubmit(form: any) {
-    this._dietService.saveDiet(this.diet).subscribe(
+    this._trainingService.saveTraining(this.training).subscribe(
       response => {
-        if(response.diet){
+        if(response.training){
           //subir la imagen
-          this._uploadService.makeFileRequest(this.url + 'diet/upload-image/' + response.diet._id, [], this.filesToUpload, 'image')
+          this._uploadService.makeFileRequest(this.url + 'training/upload-image/' + response.training._id, [], this.filesToUpload, 'image')
           .then((result:any) => {
-            if(result.diet){
-              this.save_diet = result.diet
+            if(result.training){
+              this.save_training = result.training
 
               this.status = 'success'
               form.reset()
             }else{
-              this._dietService.deleteDiet(response.diet._id).subscribe()
+              this._trainingService.deleteTraining(response.training._id).subscribe()
               this.status = 'failed'
             }
           })
@@ -64,7 +64,7 @@ export class DietCreateComponent implements OnInit {
       }
     )
   }
-  
+
   fileChangeEvent(fileInput: any){
     this.filesToUpload = <Array<File>> fileInput.target.files
   }

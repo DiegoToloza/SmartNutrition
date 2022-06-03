@@ -28,14 +28,16 @@
         </div>
         <div class="training-content">
             <p>{{training.content}}</p>
-
-            <!-- Video url -->
+        </div>
+        
+        <!-- Video url -->
+        <div class="video-player">
             <youtube-player
-                videoId="{{idVideo}}"
-                suggestedQuality="default"
-                [width]="500"
-                [showBeforeIframeApiLoads]="false"
-                *ngIf="training.urlVideo"
+            videoId="{{idVideo}}"
+            suggestedQuality="default"
+            [width]="720"
+            [showBeforeIframeApiLoads]="false"
+            *ngIf="training.urlVideo"
             ></youtube-player>
         </div>
     </div>

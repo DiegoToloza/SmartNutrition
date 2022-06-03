@@ -75,6 +75,17 @@
     <div class="album py-5">
         <div class="container">
             <div class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-3">
+                
+                <div class="col" [routerLink]="['/ejercicio/agregar-ejercicio']" *ngIf="addTraining">
+                    <div class="card shadow">
+                        <div class="card-body add-training">
+                            <img src="../assets/img/diets/plus-circle-dotted.svg" alt="Agregar un ejercicio">
+                        </div>
+                    
+                        <p class="card-text-hover">Agregar ejercicio.</p>
+                    </div>
+                </div>
+                
                 <ng-container *ngFor="let training of trainings">
 
                     <div class="col" [routerLink]="['/ejercicio', training._id]">

@@ -1,0 +1,85 @@
+<app-header></app-header>
+
+<div class="container-main body-main">
+    <h3>{{title}}</h3>
+
+    <div class="message succes" *ngIf="status == 'success'">
+        El ejercicio se ha creado correctamente, puedes <a [routerLink]="['/ejercicio', save_training._id]">verla aquí.</a>
+    </div>
+    <div class="message failed" *ngIf="status == 'failed'">
+        El ejercicio NO se ha podido crear.
+    </div>
+
+    <div class="form">
+        <form #trainingForm="ngForm" (ngSubmit)="onSubmit(trainingForm)" action="">
+            <div class="mb-3">
+                <label for="name">Nombre</label>
+                <input type="text" class="form-control" name="name" #name="ngModel" [(ngModel)]="training.name" placeholder="Nombre" required>
+                <span class="form-error" *ngIf="name.touched && !name.valid">Nombre del ejercicio es obligatorio</span>
+            </div>
+
+            <div class="mb-3">
+                <label>Categoria</label>
+
+                <input type="radio" id="chest" value="Pecho" name="category" #category="ngModel" [(ngModel)]="training.category" required>
+                <label for="chest" class="radio">Pecho</label>
+
+                <br>
+
+                <input type="radio" id="back" value="Espalda" name="category" #category="ngModel" [(ngModel)]="training.category" required>
+                <label for="back" class="radio">Espalda</label>
+
+                <br>
+
+                <input type="radio" id="arms" value="Brazos" name="category" #category="ngModel" [(ngModel)]="training.category" required>
+                <label for="arms" class="radio">Brazos</label>
+
+                <br>
+
+                <input type="radio" id="legs" value="Piernas" name="category" #category="ngModel" [(ngModel)]="training.category" required>
+                <label for="legs" class="radio">Piernas</label>
+
+                <span class="form-error" *ngIf="!category.valid">Categoria es obligatoria</span>
+            </div>
+
+            <div class="mb-3">
+                <label>Dificultad</label>
+
+                <input type="radio" id="beginner" value="Principiante" name="difficulty" #difficulty="ngModel" [(ngModel)]="training.difficulty" required>
+                <label for="beginner" class="radio">Principiante</label>
+
+                <br>
+
+                <input type="radio" id="intermediate" value="Intermedio" name="difficulty" #difficulty="ngModel" [(ngModel)]="training.difficulty" required>
+                <label for="intermediate" class="radio">Intermedio</label>
+
+                <br>
+
+                <input type="radio" id="advanced" value="Avanzado" name="difficulty" #difficulty="ngModel" [(ngModel)]="training.difficulty" required>
+                <label for="advanced" class="radio">Avanzado</label>
+
+                <span class="form-error" *ngIf="!difficulty.valid">Dificultad es obligatoria</span>
+            </div>
+
+            <div class="mb-3">
+                <label for="content">Pasos a seguir</label>
+                <textarea type="text" class="form-control" name="content" #content="ngModel" [(ngModel)]="training.content" placeholder="Pasos a seguir para la realización del ejercicio"></textarea>
+            </div>
+
+            <div class="mb-3">
+                <label for="urlVideo">Url</label>
+                <input type="text" class="form-control" name="urlVideo" #urlVideo="ngModel" [(ngModel)]="training.urlVideo" placeholder="Url de video explicativo">
+            </div>
+
+            <div class="mb-3">
+                <label for="image">Imagen del ejercicio</label>
+
+                <input type="file" name="image" placeholder="Subir imagen" (change)="fileChangeEvent($event)">
+            </div>
+
+            <input type="submit" value="Enviar" class="btn-enviar" [disabled]="!trainingForm.form.valid">
+        </form>
+    </div>
+</div>
+
+<app-footer></app-footer>

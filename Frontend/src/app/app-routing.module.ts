@@ -6,6 +6,7 @@ import { DietsComponent } from './components/diets/diets.component';
 import { DietCreateComponent } from './components/diet-create/diet-create.component';
 import { DietComponent } from './components/diet/diet.component';
 import { TrainingsComponent } from './components/trainings/trainings.component';
+import { TrainingCreateComponent } from './components/training-create/training-create.component';
 import { TrainingComponent } from './components/training/training.component';
 import { ShopComponent } from './components/shop/shop.component';
 import { LogInComponent } from './components/log-in/log-in.component';
@@ -27,6 +28,7 @@ const routes: Routes = [
   {path: 'ejercicios', component: TrainingsComponent},
   {path: 'ejercicios/:category', component: TrainingsComponent},
   {path: 'ejercicios/:category/:difficulty', component: TrainingsComponent},
+  {path: 'ejercicio/agregar-ejercicio', component: TrainingCreateComponent},
   {path: 'ejercicio/:id', component: TrainingComponent},
 
   {path: 'tienda', component: ShopComponent},

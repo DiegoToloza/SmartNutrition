@@ -8,21 +8,28 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { HomeComponent } from './components/home/home.component';
+
 import { DietsComponent } from './components/diets/diets.component';
 import { DietCreateComponent } from './components/diet-create/diet-create.component';
 import { DietComponent } from './components/diet/diet.component';
+
 import { TrainingsComponent } from './components/trainings/trainings.component';
+import { TrainingCreateComponent } from './components/training-create/training-create.component';
 import { TrainingComponent } from './components/training/training.component';
+
 import { ShopComponent } from './components/shop/shop.component';
 import { LogInComponent } from './components/log-in/log-in.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
+
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { ContactComponent } from './components/contact/contact.component';
+
 import { ErrorComponent } from './components/error/error.component';
 
 import { HeaderComponent } from './subcomponents/header/header.component';
 import { HeaderSecondaryComponent } from './subcomponents/header-secondary/header-secondary.component';
 import { FooterComponent } from './subcomponents/footer/footer.component';
+
 
 @NgModule({
   declarations: [
@@ -32,6 +39,7 @@ import { FooterComponent } from './subcomponents/footer/footer.component';
     DietCreateComponent,
     DietComponent,
     TrainingsComponent,
+    TrainingCreateComponent,
     TrainingComponent,
     ShopComponent,
     LogInComponent,

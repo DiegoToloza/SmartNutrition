@@ -14,6 +14,7 @@ import { Global } from 'src/app/services/global';
 export class TrainingsComponent implements OnInit {
   public trainings: Array<Training>
   public url: string
+  public addTraining: boolean
 
   constructor(
     private _TrainingService: TrainingService,
@@ -21,6 +22,7 @@ export class TrainingsComponent implements OnInit {
   ) { 
     this.trainings = new Array()
     this.url = Global.url
+    this.addTraining = false
    }
 
   ngOnInit(): void {
@@ -41,6 +43,7 @@ export class TrainingsComponent implements OnInit {
         this.getTrainingsCategory(category)
       }else{
         this.getTrainings()
+        this.addTraining = true
       }
     })
   }
