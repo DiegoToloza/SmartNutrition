@@ -51,9 +51,6 @@ export class TrainingsComponent implements OnInit {
         if(response.trainings){
           this.trainings = response.trainings
         }
-      },
-      error => {
-        console.log(<any>error)
       }
     )
   }
@@ -64,9 +61,6 @@ export class TrainingsComponent implements OnInit {
         if(response.trainings){
           this.trainings = response.trainings
         }
-      },
-      error => {
-        console.log(<any>error)
       }
     )
   }
@@ -77,9 +71,6 @@ export class TrainingsComponent implements OnInit {
         if(response.trainings){
           this.trainings = response.trainings
         }
-      },
-      error => {
-        console.log(<any>error)
       }
     )
   }

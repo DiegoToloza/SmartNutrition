@@ -14,71 +14,68 @@
             border-bottom: 1px solid #1EC276
 
     .album
-        a   
-            text-decoration: none
-            color: #333
             
-            .col
-                .card
-                    border:1px solid #1ec276
-                    border-radius: 15px
-                    background-color: #f5f5f5
+        .col
+            .card
+                border:1px solid #1ec276
+                border-radius: 10px
+                background-color: #f5f5f5
+                transition: all 300ms
+
+                .image
+                    position: relative
+                    height: 120px
+                    overflow: hidden
                     transition: all 300ms
 
+                    img
+                        border-radius: 10px 10px 0px 0px
+
+                    h5
+                        position: absolute
+                        color: #f5f5f5
+                        bottom: 0px
+                        padding: 5px 15px
+                        background-color: rgba(119, 119, 119,0.75)
+                        border-radius: 0px 10px 10px 0px
+                        font-weight: bold
+                        margin: 0
+
+                .card-body
+                    background-color: #f5f5f5
+                    border-radius: 10px
+                    min-height: 170px
+                    transition: all 300ms
+
+                .add-diet
+                    min-height: 290px
+                    display: flex
+                    justify-content: center
+
+                    img
+                        width: 45%
+                        opacity: 0.8
+
+                .card-text-hover
+                    display: none
+                    position: absolute
+                    top: 45%
+                    width: 100%
+                    text-align: center
+                    color: #333
+                    font-size: 1.2rem
+                    font-weight: bolder
+                    transition: all 300ms
+
+                &:hover
+                    cursor: pointer
+                    transform: scale(1.02)
+
                     .image
-                        position: relative
-                        height: 120px
-                        overflow: hidden
-                        transition: all 300ms
-
-                        img
-                            border-radius: 15px 15px 0px 0px
-
-                        h5
-                            position: absolute
-                            color: #f5f5f5
-                            bottom: 0px
-                            padding: 5px 15px
-                            background-color: rgba(119, 119, 119,0.75)
-                            border-radius: 0px 15px 15px 0px
-                            font-weight: bold
-                            margin: 0
+                        opacity: 0.4
 
                     .card-body
-                        background-color: #f5f5f5
-                        border-radius: 15px
-                        min-height: 170px
-                        transition: all 300ms
-
-                    .add-diet
-                        min-height: 290px
-                        display: flex
-                        justify-content: center
-
-                        img
-                            width: 45%
-                            opacity: 0.8
+                        opacity: 0.4
 
                     .card-text-hover
-                        display: none
-                        position: absolute
-                        top: 45%
-                        width: 100%
-                        text-align: center
-                        color: #333
-                        font-size: 1.2rem
-                        font-weight: bolder
-                        transition: all 300ms
-
-                    &:hover
-                        cursor: pointer
-                        transform: scale(1.02)
-
-                        .image
-                            opacity: 0.4
-
-                        .card-body
-                            opacity: 0.4
-
-                        .card-text-hover
-                            display: block
+                        display: block

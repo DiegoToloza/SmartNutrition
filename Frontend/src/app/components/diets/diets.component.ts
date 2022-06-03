@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { Diet } from 'src/app/models/diet';
 import { DietService } from 'src/app/services/diet/diet.service';
@@ -19,6 +19,7 @@ export class DietsComponent implements OnInit {
 
   constructor(
     private _dietService: DietService,
+    private _router: Router,
     private _route: ActivatedRoute
   ) {
     this.diets = new Array()
@@ -30,7 +31,7 @@ export class DietsComponent implements OnInit {
     this._route.params.subscribe(params => {
       if(params['category']){
         let category = params['category']
-        category = category.replace('-', ' ')
+        category = category.replaceAll('-', ' ')
         category = category.replace(/(?:^|\s)\S/g, (res:any) => { return res.toUpperCase()})
         
         this.getDietsCategory(category)
@@ -47,9 +48,6 @@ export class DietsComponent implements OnInit {
         if(response.diets){
           this.diets = response.diets
         }
-      },
-      error => {
-        console.log(<any>error)
       }
     )
   }
@@ -60,9 +58,6 @@ export class DietsComponent implements OnInit {
         if(response.diets){
           this.diets = response.diets
         }
-      },
-      error => {
-        console.log(<any>error)
       }
     )
   }

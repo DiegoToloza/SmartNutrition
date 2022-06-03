@@ -9,7 +9,9 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { DietsComponent } from './components/diets/diets.component';
 import { DietCreateComponent } from './components/diet-create/diet-create.component';
+import { DietComponent } from './components/diet/diet.component';
 import { TrainingsComponent } from './components/trainings/trainings.component';
+import { TrainingComponent } from './components/training/training.component';
 import { ShopComponent } from './components/shop/shop.component';
 import { LogInComponent } from './components/log-in/log-in.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
@@ -27,7 +29,9 @@ import { FooterComponent } from './subcomponents/footer/footer.component';
     HomeComponent,
     DietsComponent,
     DietCreateComponent,
+    DietComponent,
     TrainingsComponent,
+    TrainingComponent,
     ShopComponent,
     LogInComponent,
     SignInComponent,

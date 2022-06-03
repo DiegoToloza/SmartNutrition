@@ -6,8 +6,28 @@ var path = require('path')
 const { exists } = require('../models/training')
 
 var controller = {
+    saveTraining: function(req, res){
+        var training = new Training()
+        var params = req.body
+
+        training.name = params.name
+        training.category = params.category
+        training.difficulty = params.difficulty
+        training.content = params.content
+        training.urlVideo = params.urlVideo
+        training.image = params.image
+
+        training.save((error, trainingStored) => {
+            if(error) return res.status(500).send({message: 'Error al guardar el ejercicio.'})
+
+            if(!trainingStored) return res.status(404).send({message: 'No se ha podido guardar correctamente'})
+        
+            return res.status(200).send({training: trainingStored})
+        })
+    },
+
     getTraining: function(req, res){
-        var trainingId = req.params.trainingId
+        var trainingId = req.params.id
 
         if(trainingId == null) return res.status(404).send({message: 'El ejercicio no existe'})
     
@@ -56,6 +76,31 @@ var controller = {
         })
     },
 
+    updateTraining: function(req, res){
+        var trainingId = req.params.id
+        var update = req.body
+
+        Training.findByIdAndUpdate(trainingId, update, {new: true}, (error, trainingUpdated) => {
+            if(error) return res.status(500).send({message: 'Error al actualizar'})
+
+            if(!trainingUpdated) return res.status(404).send({message: 'No existe el ejercicio'})
+        
+            return res.status(200).send({training: trainingUpdated})
+        })
+    },
+
+    deleteTraining: function(req, res){
+        var trainingId = req.params.id
+
+        Training.findByIdAndRemove(trainingId, (error, trainingRemoved) => {
+            if(error) return res.status(500).send({message: 'Error al eliminar'})
+
+            if(!trainingRemoved) return res.status(404).send({message: 'No se puede eliminar'})
+        
+            return res.status(200).send({training: trainingRemoved})
+        })
+    },
+
     uploadImage: function(req, res){
         var trainingId = req.params.id
         var fileName = 'Imagen no subida...'
@@ -96,6 +141,18 @@ var controller = {
                 return res.status(200).send({message: 'No existe la imagen...'})
             }
         })
+    },
+
+    deleteImage: function(req, res){
+        var file = req.params.image
+        var path_file = './uploads/trainings/' + file
+
+        try {
+            fs.unlinkSync(path_file)
+            return res.status(200).send({message: 'Imagen eliminada correctamente'})
+        }catch(err) {
+            return res.status(200).send({message: 'No existe la imagen...'})
+        }
     }
 }
 

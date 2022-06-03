@@ -50,9 +50,6 @@ export class DietCreateComponent implements OnInit {
         }else{
           this.status = 'failed'
         }
-      },
-      error => {
-        console.log(<any> error)
       }
     )
   }

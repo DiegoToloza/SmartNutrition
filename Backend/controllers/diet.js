@@ -135,7 +135,7 @@ var controller = {
 
         try {
             fs.unlinkSync(path_file)
-            return res.status(200).send({message: 'Imagen eliminada correctament'})
+            return res.status(200).send({message: 'Imagen eliminada correctamente'})
         }catch(err) {
             return res.status(200).send({message: 'No existe la imagen...'})
         }

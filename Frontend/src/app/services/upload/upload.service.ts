@@ -1,4 +1,7 @@
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
 import { Global } from '../global';
 
 @Injectable({
@@ -7,7 +10,9 @@ import { Global } from '../global';
 export class UploadService {
   public url: string
 
-  constructor() {
+  constructor(
+    private _http: HttpClient
+  ) {
     this.url = Global.url
   }
 
@@ -33,5 +38,11 @@ export class UploadService {
       xhr.open('POST', url, true)
       xhr.send(formData)
     })
+  }
+
+  deleteFileRequest(url: string): Observable<any> {
+    let headers = new HttpHeaders().set('Content-Type', 'application/json')
+
+    return this._http.delete(url, { headers: headers })
   }
 }

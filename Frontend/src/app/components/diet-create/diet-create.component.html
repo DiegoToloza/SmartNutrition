@@ -4,7 +4,7 @@
     <h3>{{title}}</h3>
 
     <div class="message success" *ngIf="status == 'success'">
-        La dieta se ha creador correctamente, puedes <a href="">verla aquí.</a>
+        La dieta se ha creador correctamente, puedes <a [routerLink]="['/dieta', save_diet._id]">verla aquí.</a>
     </div>
     <div class="message failed" *ngIf="status == 'failed'">
         La dieta NO se ha podido crear.

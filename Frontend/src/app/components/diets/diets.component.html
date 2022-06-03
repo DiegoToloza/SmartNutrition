@@ -21,37 +21,33 @@
         <div class="container">            
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3" id="album-diets">
 
-                <a [routerLink]="['/dieta/agregar-dieta']" *ngIf="addDiet">
-                    <div class="col">
-                        <div class="card shadow">
-                            <div class="card-body add-diet">
-                                <img src="../assets/img/diets/plus-circle-dotted.svg" alt="Agregar una dieta">
-                            </div>
-
-                            <p class="card-text-hover">Agregar una dieta.</p>
+                <div class="col" [routerLink]="['/dieta/agregar-dieta']" *ngIf="addDiet">
+                    <div class="card shadow">
+                        <div class="card-body add-diet">
+                            <img src="../assets/img/diets/plus-circle-dotted.svg" alt="Agregar una dieta">
                         </div>
+
+                        <p class="card-text-hover">Agregar una dieta.</p>
                     </div>
-                </a>
+                </div>
 
                 <ng-container *ngFor="let diet of diets;">
                     
-                    <a href="#">
-                        <div class="col">
-                            <div class="card shadow">
-                                <div class="image">
-                                    <img src="{{url + 'diet/get-image/' + diet.image}}" class="card-img-top" alt="...">
-                                    <h5>{{diet.name}}</h5>
-                                </div>
-                                <div class="card-body">
-                                    <p class="card-text">
-                                        {{diet.description}}
-                                    </p>
-                                </div>
-        
-                                <p class="card-text-hover">Más información...</p>
+                    <div class="col" [routerLink]="['/dieta', diet._id]">
+                        <div class="card shadow">
+                            <div class="image">
+                                <img src="{{url + 'diet/get-image/' + diet.image}}" class="card-img-top" alt="...">
+                                <h5>{{diet.name}}</h5>
                             </div>
+                            <div class="card-body">
+                                <p class="card-text">
+                                    {{diet.description}}
+                                </p>
+                            </div>
+    
+                            <p class="card-text-hover">Más información...</p>
                         </div>
-                    </a>
+                    </div>
 
                 </ng-container>               
             </div>
