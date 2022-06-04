@@ -1,14 +1,5 @@
 [{
   "_id": {
-    "$oid": "6283393e2d3a22e62fe25dd7"
-  },
-  "name": "Caballo",
-  "description": "A pura agua y paja.",
-  "category": "No Vegana",
-  "content": "A pura agua y paja.",
-  "image": "-BiCJA1akLUgNHP7dWkDnCJV.jpg"
-},{
-  "_id": {
     "$oid": "62833b032d3a22e62fe25dd8"
   },
   "name": "Lorem Ipsum",
@@ -34,5 +25,25 @@
   "category": "No Vegana",
   "content": "Pollito a las brasas",
   "image": "4_Xjto5mxR-NvjS_uEK_-Kr5.jpg",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "628b338d591b0b69b3dd6b3e"
+  },
+  "name": "Wenos Wenos",
+  "description": "Este es la mejor dieta pa los wenos wenos.",
+  "category": "No Vegana",
+  "content": "Dieta en la cual lo Wenos Wenos consumen para mantener el mejor cuerpo posible para el ser humano.",
+  "image": "f0ZpYjj3jMFleOqW-2HGvsQu.jpg",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6295b2d75cceb51556c2b242"
+  },
+  "name": "Probando Web",
+  "description": "uaoeueo",
+  "category": "Vegana",
+  "content": "oeauaeoueo oeuaueoa uuoea u",
+  "image": "ffCbVkVsPOBDANoK6B83bjJL.jpg",
   "__v": 0
 }]
