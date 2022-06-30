@@ -48,8 +48,8 @@ export class DietEditComponent implements OnInit {
   getDiet(id: string) {
     this._dietService.getDiet(id).subscribe(
       response => {
-        this.diet = response.diet
-        this.pre_diet = response.diet
+        this.diet = response
+        this.pre_diet = response
       }
     )
   }
@@ -57,14 +57,14 @@ export class DietEditComponent implements OnInit {
   onSubmit(form: any) {
     this._dietService.updateDiet(this.diet).subscribe(
       response => {
-        if(response.diet){
+        if(response){
           //subir la imagen
           if(this.filesToUpload.length){
-            this._uploadService.makeFileRequest(this.url + 'diet/upload-image/' + response.diet._id, [], this.filesToUpload, 'image')
+            this._uploadService.makeFileRequest(this.url + 'diets/upload-image/' + response._id, [], this.filesToUpload, 'image')
             .then((result: any) => {
-              if(result.diet){
+              if(result){
                 //eliminar imagen anterior
-                this._uploadService.deleteFileRequest(this.url + '/diet/delete-image/' + this.pre_diet.image).subscribe()
+                this._uploadService.deleteFileRequest(this.url + 'diets/delete-image/' + this.pre_diet.image).subscribe()
 
                 this.save_diet = result.diet
                 this.status = 'success'
@@ -74,7 +74,7 @@ export class DietEditComponent implements OnInit {
               }
             })
           }else{
-            this.save_diet = response.diet
+            this.save_diet = response
             this.status = 'success'
           }
         }else{

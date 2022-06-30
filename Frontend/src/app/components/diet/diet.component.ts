@@ -37,7 +37,7 @@ export class DietComponent implements OnInit {
   getDiet(id: string) {
     this._dietService.getDiet(id).subscribe(
       response => {
-        this.diet = response.diet
+        this.diet = response
       }
     )
   }
@@ -45,12 +45,9 @@ export class DietComponent implements OnInit {
   deleteDiet(id: string) {
     this._dietService.deleteDiet(id).subscribe(
       response => {
-        if(response.diet){
-          // eliminar imagen de la dieta
-          this._uploadService.deleteFileRequest(this.url + '/diet/delete-image/' + response.diet.image).subscribe()
+        this._uploadService.deleteFileRequest(this.url + 'diets/delete-image/' + response.image).subscribe()
 
-          this._router.navigate(['/dietas'])
-        }
+        this._router.navigate(['/dietas'])
       }
     )
   }

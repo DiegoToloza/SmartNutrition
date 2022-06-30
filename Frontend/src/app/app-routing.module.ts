@@ -23,14 +23,11 @@ const routes: Routes = [
   {path: 'inicio', component: HomeComponent},
 
   {path: 'dietas', component: DietsComponent},
-  {path: 'dietas/:category', component: DietsComponent},
   {path: 'dieta/agregar-dieta', component: DietCreateComponent},
   {path: 'dieta/editar-dieta/:id', component: DietEditComponent},
   {path: 'dieta/:id', component: DietComponent},
 
   {path: 'ejercicios', component: TrainingsComponent},
-  {path: 'ejercicios/:category', component: TrainingsComponent},
-  {path: 'ejercicios/:category/:difficulty', component: TrainingsComponent},
   {path: 'ejercicio/agregar-ejercicio', component: TrainingCreateComponent},
   {path: 'ejercicio/editar-ejercicio/:id', component: TrainingEditComponent},
   {path: 'ejercicio/:id', component: TrainingComponent},

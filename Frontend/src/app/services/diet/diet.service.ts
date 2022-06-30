@@ -27,7 +27,7 @@ export class DietService {
   getDiet(id: string): Observable<any> {
     let headers = new HttpHeaders().set('Content-Type', 'application/json')
 
-    return this._http.get(this.url + 'diet/' + id, { headers: headers })
+    return this._http.get(this.url + 'diets/' + id, { headers: headers })
   }
 
   getDiets(): Observable<any> {
@@ -39,19 +39,19 @@ export class DietService {
   getDietsCategory(category: string): Observable<any> {
     let headers = new HttpHeaders().set('Content-Type', 'application/json')
 
-    return this._http.get(this.url + 'diets/' + category, { headers: headers })
+    return this._http.get(this.url + 'diets?category=' + category, { headers: headers })
   }
 
   deleteDiet(id: string): Observable<any> {
     let headers = new HttpHeaders().set('Content-Type', 'application/json')
 
-    return this._http.delete(this.url + 'diet/' + id, { headers: headers })
+    return this._http.delete(this.url + 'diets/' + id, { headers: headers })
   }
 
   updateDiet(diet: Diet): Observable<any> {
     let params = JSON.stringify(diet)
     let headers = new HttpHeaders().set('Content-Type', 'application/json')
 
-    return this._http.put(this.url + 'diet/' + diet._id, params, { headers: headers })
+    return this._http.put(this.url + 'diets/' + diet._id, params, { headers: headers })
   }
 }

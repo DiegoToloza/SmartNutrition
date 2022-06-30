@@ -14,6 +14,7 @@ import { Global } from 'src/app/services/global';
 })
 export class DietsComponent implements OnInit {
   public diets: Array<Diet>
+  public activo: string
   public url: string
   public addDiet: boolean
 
@@ -23,31 +24,19 @@ export class DietsComponent implements OnInit {
     private _route: ActivatedRoute
   ) {
     this.diets = new Array()
+    this.activo = ''
     this.url = Global.url
     this.addDiet = true
   }
 
   ngOnInit(): void {
-    this._route.params.subscribe(params => {
-      if(params['category']){
-        let category = params['category']
-        category = category.replaceAll('-', ' ')
-        category = category.replace(/(?:^|\s)\S/g, (res:any) => { return res.toUpperCase()})
-        
-        this.getDietsCategory(category)
-        this.addDiet = false
-      }else{
-        this.getDiets()
-      }
-    })
+    this.getDiets()
   }
 
   getDiets(){
     this._dietService.getDiets().subscribe(
       response => {
-        if(response.diets){
-          this.diets = response.diets
-        }
+        this.diets = response
       }
     )
   }
@@ -55,10 +44,21 @@ export class DietsComponent implements OnInit {
   getDietsCategory(category: string){
     this._dietService.getDietsCategory(category).subscribe(
       response => {
-        if(response.diets){
-          this.diets = response.diets
-        }
+        this.diets = response
       }
     )
+  }
+
+  alternar(category: string) {
+    if(category == this.activo) {
+      this.activo = ''
+      this.getDiets()
+    }else if(category == 'no-vegan'){
+      this.activo = category
+      this.getDietsCategory('No Vegana')
+    }else if(category == 'vegan'){
+      this.activo = category
+      this.getDietsCategory('Vegana')
+    }
   }
 }
