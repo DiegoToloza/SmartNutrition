@@ -17,11 +17,7 @@ SmartNutrition es una web, la cual maneja dietas, ejercicios que son manejados p
 ## Funcionalidades
 
 ### Usuarios
-1. [Creacion de usuario](#creacion-usuario)
-
-<a name="creacion-usuario">
-    Al crear un usuario por medio del logIn este crea un usuario con los atributos *"username"*
-</a>
+* [Creacion de usuario] Al crear un usuario por medio del logIn este crea un usuario con los atributos *"username"*
 
 1.- Creación de usuarios: Se crea un usuario con los atributos "Nombre","E-mail","Contraseña", y se almacenan en la base de datos, generando un id propio.
 2.- Creación de Dietas Personalizadas: Al haber iniciado sesión, el usuario podrá crear sus propias dietas, las que se almacenaran en la base de datos asociandolas al id del usuario
