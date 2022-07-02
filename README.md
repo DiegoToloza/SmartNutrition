@@ -17,10 +17,10 @@ SmartNutrition es una web, la cual maneja dietas, ejercicios que son manejados p
 ## Funcionalidades
 
 ### Usuarios
-* [Creacion de usuario]: Por medio del logIn este crea un usuario con los atributos *"username"*, *"email"*, *"contraseña"* e *"imagen: default"*, y se almacenara en la base de datos generando un *"id"* propio. 
+* ``Creación de usuario``: Por medio del logIn este crea un usuario con los atributos *"username"*, *"email"*, *"contraseña"* e *"imagen: default"*, y se almacenara en la base de datos generando un *"id"* propio.
 
+* [Obtención de usuario]: Por medio del token que se genera al iniciar sesión este hara una petición al *"Backend"* y obtendra los datos del usuario logeado.
 
-2.- Creación de Dietas Personalizadas: Al haber iniciado sesión, el usuario podrá crear sus propias dietas, las que se almacenaran en la base de datos asociandolas al id del usuario
 3.- Creación de listas de ejercicios: Al haber iniciado sesión, el usuario podrá crear sus propias rutinas de ejercicios, usando los que dispone la aplicación web. Estas listas se almacenaran en la base de datos asociandolas al id del usuario
 4.- Mostrar por pantalla Dietas: La aplicación web obtendrá dietas desde la base de datos, y las mostrará por pantalla.
 5.- Mostrar por pantalla Ejercicios: La aplicación web obtendrá ejercicios desde la base de datos, y los mostrará por pantalla.
