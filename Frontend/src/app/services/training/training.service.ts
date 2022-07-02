@@ -14,50 +14,50 @@ export class TrainingService {
     constructor(
         private _http: HttpClient
     ) {
-        this.url = Global.url
+        this.url = Global.url + 'trainings/'
     }
 
     saveTraining(training: Training): Observable<any> {
         let params = JSON.stringify(training)
         let headers = new HttpHeaders().set('Content-Type', 'application/json')
 
-        return this._http.post(this.url + 'save-training', params, {headers: headers})
+        return this._http.post(this.url, params, {headers: headers})
     }
 
     getTraining(id: string): Observable<any> {
         let headers = new HttpHeaders().set('Content-Type', 'application/json')
 
-        return this._http.get(this.url + 'training/' + id, { headers: headers })
+        return this._http.get(this.url + id, { headers: headers })
     }
 
     getTrainings(): Observable<any> {
         let headers = new HttpHeaders().set('Content-Type', 'application/json')
 
-        return this._http.get(this.url + 'trainings', { headers: headers })
+        return this._http.get(this.url , { headers: headers })
     }
 
     getTrainingsCategory(category: string): Observable<any> {
         let headers = new HttpHeaders().set('Content-Type', 'application/json')
 
-        return this._http.get(this.url + 'trainings/' + category, { headers: headers })
+        return this._http.get(this.url + '?category=' + category, { headers: headers })
     }
 
     getTrainingsCategoryDifficulty(category: string, difficulty: string): Observable<any> {
         let headers = new HttpHeaders().set('Content-Type', 'application/json')
 
-        return this._http.get(this.url + 'trainings/' + category + '/' + difficulty, { headers: headers })
+        return this._http.get(this.url + '?category=' + category + '&&difficulty=' + difficulty, { headers: headers })
     }
 
     deleteTraining(id: string): Observable<any> {
         let headers = new HttpHeaders().set('Content-Type', 'application/json')
 
-        return this._http.delete(this.url + 'training/' + id, { headers: headers })
+        return this._http.delete(this.url + id, { headers: headers })
     }
 
     updateTraining(training: Training): Observable<any> {
         let params = JSON.stringify(training)
         let headers = new HttpHeaders().set('Content-Type', 'application/json')
 
-        return this._http.put(this.url + 'training/' + training._id, params, { headers: headers })
+        return this._http.put(this.url + training._id, params, { headers: headers })
     }
 }

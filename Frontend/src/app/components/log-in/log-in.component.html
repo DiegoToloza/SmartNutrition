@@ -1,14 +1,14 @@
 <app-header-secondary></app-header-secondary>
 
-<div class="container-main body-main">
+<div class="container-main body-main mb-5">
     <div class="form">
         <h3>{{title}}</h3>
         
         <form #logInForm="ngForm" (ngSubmit)="onSubmit(logInForm)" action="">
             <div class="mb-3">
-                <label for="userName">Nombre de Usuario</label>
-                <input type="text" class="form-control" name="userName" #userName="ngModel" [(ngModel)]="logInUser.userName" placeholder="Nombre de Usuario" required>
-                <span class="form-error" *ngIf="userName.touched && !userName.valid">Nombre de usuario es obligatorio</span>
+                <label for="username">Nombre de Usuario</label>
+                <input type="text" class="form-control" name="username" #username="ngModel" [(ngModel)]="logInUser.username" placeholder="Nombre de Usuario" required>
+                <span class="form-error" *ngIf="username.touched && !username.valid">Nombre de usuario es obligatorio</span>
             </div>
             <div class="mb-3">
                 <label for="email">E-mail</label>
@@ -26,9 +26,11 @@
                 <span class="form-error" *ngIf="passwordCheck.touched && !passwordCheck.valid">Contraseña es obligatoria</span>
             </div>
 
+            <span class="form-error" *ngIf="errorSesion">{{errorMessage}}</span>
+
             <input type="submit" value="Registrate" class="btn-register" [disabled]="!logInForm.form.valid">
         </form>
-
+<!--
         <p class="register-with">o Registrate con</p>
 
         <div class="register-with-btn">
@@ -45,7 +47,7 @@
                 </a>
             </div>
         </div>
-
+-->
         <p class="sign-in">¿Ya tienes una cuenta? <a [routerLink]="['/iniciar-sesion']" >Inicia Sesion aquí</a></p>
     </div>
 </div>

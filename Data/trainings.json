@@ -13,10 +13,75 @@
     "$oid": "6299ea68a321dbe0a956666c"
   },
   "name": "Dominadas",
-  "category": "Brazos",
+  "category": "Espalda",
   "difficulty": "Intermedio",
   "content": "1. Grab the bar shoulder width apart with a supinated grip (palms facing you).\n2. With your body hanging and arms fully extended, pull yourself up until your chin is past the bar.\n3. Slowly return to starting position. Repeat.",
   "urlVideo": "https://www.youtube.com/watch?v=v7BuGTumRUg",
-  "image": "ZUI3xAp8QojLmnjnlfaU4OOv.jpg",
-  "__v": 0
+  "image": "lY1fD9tlZN1juDXPsKu4pMLc.jpeg",
+  "__v": 0,
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1656791635407"
+    }
+  }
+},{
+  "_id": {
+    "$oid": "62bfa2cad58e35152829d23b"
+  },
+  "name": "Sentadilla",
+  "category": "Piernas",
+  "difficulty": "Avanzado",
+  "content": "1. Stand with your feet shoulder-width apart. Maintain the natural arch in your back, squeezing your shoulder blades and raising your chest.\n2. Grip the bar across your shoulders and support it on your upper back. Unwrack the bar by straightening your legs, and take a step back.\n3. Bend your knees as you lower the weight without altering the form of your back until your hips are below your knees.\n4. Raise the bar back to starting position, lift with your legs and exhale at the top.",
+  "urlVideo": "https://www.youtube.com/watch?v=X9AaFTU5t5c",
+  "image": "default.jpg",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1656726218444"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1656791837630"
+    }
+  }
+},{
+  "_id": {
+    "$oid": "62c0a3bbdc13c7d7304f3084"
+  },
+  "name": "Forward Lunge",
+  "category": "Piernas",
+  "difficulty": "Principiante",
+  "content": "1. Stand straight with your feet slightly apart and hold a kettlebell in one hand.\n2. Bring the same leg as the arm holding the kettlebell in front of you, squat down until your thigh is parallel to the ground, keeping your back straight.\n3. Return to the starting position and repeat.",
+  "urlVideo": "https://www.youtube.com/watch?v=jpdh_SWjTX4",
+  "image": "Ui0nSeb7J_AupUAYiuKCZlfM.jpg",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1656791995712"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1656791995720"
+    }
+  }
+},{
+  "_id": {
+    "$oid": "62c0a422dc13c7d7304f30aa"
+  },
+  "name": "Hammer Curl",
+  "category": "Brazos",
+  "difficulty": "Principiante",
+  "content": "1. Hold the dumbbells with a neutral grip (thumbs facing the ceiling).\n2. Slowly lift the dumbbell up to chest height\n3. Return to starting position and repeat.",
+  "urlVideo": "https://www.youtube.com/watch?v=mrgLRy5-JJU",
+  "image": "default.jpg",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1656792098689"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1656792098699"
+    }
+  }
 }]

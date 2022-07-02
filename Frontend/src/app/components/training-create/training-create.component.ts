@@ -23,13 +23,13 @@ export class TrainingCreateComponent implements OnInit {
   constructor(
     private _trainingService: TrainingService,
     private _uploadService: UploadService
-  ) { 
+  ) {
     this.title = 'Crear Ejercicio'
     this.status = ''
-    this.training = new Training('','','','','','','')
-    this.save_training = new Training('','','','','','','')
+    this.training = new Training('', '', '', '', '', '', '')
+    this.save_training = new Training('', '', '', '', '', '', '')
     this.filesToUpload = new Array()
-    this.url = Global.url
+    this.url = Global.url + 'trainings/'
   }
 
   ngOnInit(): void {
@@ -38,21 +38,39 @@ export class TrainingCreateComponent implements OnInit {
   onSubmit(form: any) {
     this._trainingService.saveTraining(this.training).subscribe(
       response => {
-        if(response.training){
+        if (response.training) {
           //subir la imagen
-          this._uploadService.makeFileRequest(this.url + 'training/upload-image/' + response.training._id, [], this.filesToUpload, 'image')
-          .then((result:any) => {
-            if(result.training){
-              this.save_training = result.training
+          if (this.filesToUpload.length > 0) {
+            this._uploadService.makeFileRequest(this.url + 'upload-image/' + response.training._id, [], this.filesToUpload, 'image')
+              .then((result: any) => {
+                if (result.training) {
+                  this.save_training = result.training
 
-              this.status = 'success'
-              form.reset()
-            }else{
-              this._trainingService.deleteTraining(response.training._id).subscribe()
-              this.status = 'failed'
-            }
-          })
-        }else{
+                  this.status = 'success'
+                  form.reset()
+                } else {
+                  this._trainingService.deleteTraining(response.training._id).subscribe()
+                  this.status = 'failed'
+                }
+              })
+          } else {
+            response.training.image = 'default.jpg'
+            this._trainingService.updateTraining(response.training).subscribe(
+              response => {
+                if (response.training) {
+                  this.save_training = response.training
+
+                  this.status = 'success'
+                  form.reset()
+                } else {
+                  this._trainingService.deleteTraining(response.training._id).subscribe()
+                  this.status = 'failed'
+                }
+              }
+            )
+          }
+
+        } else {
           this.status = 'failed'
         }
 
@@ -65,8 +83,8 @@ export class TrainingCreateComponent implements OnInit {
     )
   }
 
-  fileChangeEvent(fileInput: any){
-    this.filesToUpload = <Array<File>> fileInput.target.files
+  fileChangeEvent(fileInput: any) {
+    this.filesToUpload = <Array<File>>fileInput.target.files
   }
 
 }

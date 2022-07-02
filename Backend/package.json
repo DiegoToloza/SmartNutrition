@@ -1,21 +1,33 @@
 {
-  "name": "api-rest-nodejs",
+  "name": "backend_3",
   "version": "1.0.0",
-  "description": "Api Pest de SmartNutrition",
+  "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "babel src --out-dir build",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js"
+    "dev": "nodemon src/index.js --exec babel-node",
+    "start": "node build/index.js"
   },
-  "author": "Rafael Carvacho",
+  "keywords": [],
+  "author": "Zeusdm",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.20.0",
+    "bcryptjs": "^2.4.3",
     "connect-multiparty": "^2.2.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
     "express": "^4.18.1",
-    "mongoose": "^6.3.3"
+    "helmet": "^5.1.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.4.1",
+    "morgan": "^1.10.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.16"
+    "@babel/cli": "^7.18.6",
+    "@babel/core": "^7.18.6",
+    "@babel/node": "^7.18.6",
+    "@babel/preset-env": "^7.18.6",
+    "nodemon": "^2.0.18"
   }
 }

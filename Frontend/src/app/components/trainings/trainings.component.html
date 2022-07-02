@@ -1,7 +1,7 @@
 <app-header></app-header>
 
 <div class="container-main body-main">
-    <div class="categorias py-3">
+    <div class="categorias py-3 no-selected">
         <h5>Categorías</h5>
         <ul class="list-unstyled ps-0">
             <li class="mb-1">
@@ -13,9 +13,9 @@
                 </button>
                 <div class="collapse" id="chest-collapse">
                     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                        <li><a class="link-dark rounded" [routerLink]="['/ejercicios/pecho/principiante']">Principiante</a></li>
-                        <li><a class="link-dark rounded" [routerLink]="['/ejercicios/pecho/intermedio']">Intermedio</a></li>
-                        <li><a class="link-dark rounded" [routerLink]="['/ejercicios/pecho/avanzado']">Avanzado</a></li>
+                        <li><a class="link-dark rounded" (click)="updateCategoryDifficulty('Pecho', 'Principiante')">Principiante</a></li>
+                        <li><a class="link-dark rounded" (click)="updateCategoryDifficulty('Pecho', 'Intermedio')">Intermedio</a></li>
+                        <li><a class="link-dark rounded" (click)="updateCategoryDifficulty('Pecho', 'Avanzado')">Avanzado</a></li>
                     </ul>
                 </div>
             </li>
@@ -28,9 +28,9 @@
                 </button>
                 <div class="collapse" id="back-collapse">
                     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                        <li><a class="link-dark rounded" [routerLink]="['/ejercicios/espalda/principiante']">Principiante</a></li>
-                        <li><a class="link-dark rounded" [routerLink]="['/ejercicios/espalda/intermedio']">Intermedio</a></li>
-                        <li><a class="link-dark rounded" [routerLink]="['/ejercicios/espalda/avanzado']">Avanzado</a></li>
+                        <li><a class="link-dark rounded" (click)="updateCategoryDifficulty('Espalda', 'Principiante')">Principiante</a></li>
+                        <li><a class="link-dark rounded" (click)="updateCategoryDifficulty('Espalda', 'Intermedio')">Intermedio</a></li>
+                        <li><a class="link-dark rounded" (click)="updateCategoryDifficulty('Espalda', 'Avanzado')">Avanzado</a></li>
                     </ul>
                 </div>
             </li>
@@ -43,9 +43,9 @@
                 </button>
                 <div class="collapse" id="arms-collapse">
                     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                        <li><a class="link-dark rounded" [routerLink]="['/ejercicios/brazos/principiante']">Principiante</a></li>
-                        <li><a class="link-dark rounded" [routerLink]="['/ejercicios/brazos/intermedio']">Intermedio</a></li>
-                        <li><a class="link-dark rounded" [routerLink]="['/ejercicios/brazos/avanzado']">Avanzado</a></li>
+                        <li><a class="link-dark rounded" (click)="updateCategoryDifficulty('Brazos', 'Principiante')">Principiante</a></li>
+                        <li><a class="link-dark rounded" (click)="updateCategoryDifficulty('Brazos', 'Intermedio')">Intermedio</a></li>
+                        <li><a class="link-dark rounded" (click)="updateCategoryDifficulty('Brazos', 'Avanzado')">Avanzado</a></li>
                     </ul>
                 </div>
             </li>
@@ -58,14 +58,14 @@
                 </button>
                 <div class="collapse" id="legs-collapse">
                     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                        <li><a class="link-dark rounded" [routerLink]="['/ejercicios/piernas/principiante']">Principiante</a></li>
-                        <li><a class="link-dark rounded" [routerLink]="['/ejercicios/piernas/intermedio']">Intermedio</a></li>
-                        <li><a class="link-dark rounded" [routerLink]="['/ejercicios/piernas/avanzado']">Avanzado</a></li>
+                        <li><a class="link-dark rounded" (click)="updateCategoryDifficulty('Piernas', 'Principiante')">Principiante</a></li>
+                        <li><a class="link-dark rounded" (click)="updateCategoryDifficulty('Piernas', 'Intermedio')">Intermedio</a></li>
+                        <li><a class="link-dark rounded" (click)="updateCategoryDifficulty('Piernas', 'Avanzado')">Avanzado</a></li>
                     </ul>
                 </div>
             </li>
             <li class="mb-1">
-                <button class="btn btn-toggle align-items-center rounded collapsed dlt-filter" [routerLink]="['/ejercicios']">
+                <button class="btn btn-toggle align-items-center rounded collapsed dlt-filter" (click)="updateCategoryDifficulty('', '')">
                     Eliminar Filtro
                 </button>
             </li>
@@ -76,7 +76,7 @@
         <div class="container">
             <div class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-3">
                 
-                <div class="col" [routerLink]="['/ejercicio/agregar-ejercicio']" *ngIf="addTraining">
+                <div class="col" [routerLink]="['/ejercicio/agregar-ejercicio']" *ngIf="view">
                     <div class="card shadow">
                         <div class="card-body add-training">
                             <img src="../assets/img/diets/plus-circle-dotted.svg" alt="Agregar un ejercicio">
@@ -91,7 +91,7 @@
                     <div class="col" [routerLink]="['/ejercicio', training._id]">
                         <div class="card shadow">
                             <div class="image">
-                                <img src="{{url + 'training/get-image/' + training.image}}" class="card-img-top" alt="...">
+                                <img src="{{getTrainingImage(training)}}" class="card-img-top" alt="...">
                             </div>
                             
                             <div class="card-body">

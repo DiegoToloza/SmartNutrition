@@ -34,7 +34,7 @@ export class DietEditComponent implements OnInit {
     this.diet = new Diet('','','','','','')
     this.save_diet = new Diet('','','','','','')
     this.filesToUpload = new Array()
-    this.url = Global.url
+    this.url = Global.url + 'diets/'
   }
 
   ngOnInit(): void {
@@ -60,11 +60,11 @@ export class DietEditComponent implements OnInit {
         if(response.diet){
           //subir la imagen
           if(this.filesToUpload.length){
-            this._uploadService.makeFileRequest(this.url + 'diet/upload-image/' + response.diet._id, [], this.filesToUpload, 'image')
+            this._uploadService.makeFileRequest(this.url + 'upload-image/' + response.diet._id, [], this.filesToUpload, 'image')
             .then((result: any) => {
               if(result.diet){
                 //eliminar imagen anterior
-                this._uploadService.deleteFileRequest(this.url + '/diet/delete-image/' + this.pre_diet.image).subscribe()
+                this._uploadService.deleteFileRequest(this.url + 'delete-image/' + this.pre_diet.image).subscribe()
 
                 this.save_diet = result.diet
                 this.status = 'success'
@@ -92,5 +92,9 @@ export class DietEditComponent implements OnInit {
 
   fileChangeEvent(fileInput: any){
     this.filesToUpload = <Array<File>> fileInput.target.files
+  }
+
+  getDietImage() {
+    return this.url + 'get-image/' + this.diet.image
   }
 }
