@@ -4,44 +4,77 @@ import Diet from '../models/Diet'
 const fs = require('fs')
 const path = require('path')
 
-export const createDiet = async (req, res) => {
+export const createDiet = (req, res) => {
     const { name, description, category, content, image } = req.body
 
-    const newDiet = new Diet({ name, description, category, content, image })
-    const dietSaved = await newDiet.save()
+    const diet = new Diet({ name, description, category, content, image })
+    diet.save((error, dietStored) => {
+        if (error) return res.status(500).send({ message: 'Error al guardar la dieta' })
 
-    res.status(201).json(dietSaved)
+        if (!dietStored) return res.status(404).send({ message: 'No se ha podido guardar correctamente' })
+
+        return res.status(200).send({ diet: dietStored })
+    })
 }
 
-export const getDiets = async (req, res) => {
+export const getDiets = (req, res) => {
     const { category } = req.query
     if (category) {
-        const diets = await Diet.find({ category: category }).sort('name')
-        res.status(200).json(diets)
+        Diet.find({ category: category }).sort('name').exec((error, diets) => {
+            if (error) return res.status(500).send({ message: 'Error al devolver las dietas' })
+
+            if (!diets) return res.status(404).send({ message: 'No hay dietas que mostrar' })
+
+            return res.status(200).send({ diets })
+        })
     } else {
-        const diets = await Diet.find({}).sort('name')
-        res.status(200).json(diets)
+        Diet.find({}).sort('name').exec((error, diets) => {
+            if (error) return res.status(500).send({ message: 'Error al devolver las dietas' })
+
+            if (!diets) return res.status(404).send({ message: 'No hay dietas que mostrar' })
+
+            return res.status(200).send({ diets })
+        })
     }
 }
 
-export const getDietById = async (req, res) => {
-    const diet = await Diet.findById(req.params.dietId)
+export const getDietById = (req, res) => {
+    const dietId = req.params.dietId
 
-    res.status(200).json(diet)
-}
+    if (dietId == null) return res.status(404).send({ message: 'La dieta no existe' })
 
-export const updateDietById = async (req, res) => {
-    const updateDiet = await Diet.findByIdAndUpdate(req.params.dietId, req.body, {
-        new: true
+    Diet.findById(dietId, (error, diet) => {
+        if (error) return res.status(500).send({ message: 'Error al obtener la dieta' })
+
+        if (!diet) return res.status(404).send({ message: 'La dieta no existe' })
+
+        return res.status(200).send({ diet })
     })
-
-    res.status(200).json(updateDiet)
 }
 
-export const deleteDietById = async (req, res) => {
-    const deleteDiet = await Diet.findByIdAndDelete(req.params.dietId)
+export const updateDietById = (req, res) => {
+    const dietId = req.params.dietId
+    const update = req.body
 
-    res.status(200).json(deleteDiet)
+    Diet.findByIdAndUpdate(dietId, update, { new: true }, (error, dietUpdated) => {
+        if (error) return res.status(500).send({ message: 'Error al actualizar' })
+
+        if (!dietUpdated) return res.status(404).send({ message: 'No existe la dieta' })
+
+        return res.status(200).send({ diet: dietUpdated })
+    })
+}
+
+export const deleteDietById = (req, res) => {
+    const dietId = req.params.dietId
+
+    Diet.findByIdAndRemove(dietId, (error, dietRemoved) => {
+        if (error) return res.status(500).send({ message: 'Error al eliminar' })
+
+        if (!dietRemoved) return res.status(404).send({ message: 'No se puede eliminar' })
+
+        return res.status(200).send({ diet: dietRemoved })
+    })
 }
 
 export const uploadImage = (req, res) => {
@@ -49,19 +82,19 @@ export const uploadImage = (req, res) => {
     const filename = 'image not found'
 
     if (req.files) {
-        var filePath = req.files.image.path
-        var fileSplit = filePath.split('\\')
-        var fileName = fileSplit[3]
-        var extSplit = fileName.split('\.')
-        var fileExt = extSplit[1]
+        const filePath = req.files.image.path
+        const fileSplit = filePath.split('\\')
+        const fileName = fileSplit[3]
+        const extSplit = fileName.split('\.')
+        const fileExt = extSplit[1]
 
         if (fileExt == 'png' || fileExt == 'jpg' || fileExt == 'jpeg') {
             Diet.findByIdAndUpdate(dietId, { image: fileName }, { new: true }, (error, updateDiet) => {
-                if(error) res.status(500).send({message: 'Update error'})
+                if (error) res.status(500).send({ message: 'Update error' })
 
-                if(!updateDiet) res.status(404).send({message: 'Diet not found'})
+                if (!updateDiet) res.status(404).send({ message: 'Diet not found' })
 
-                res.status(200).send({diet: updateDiet})
+                res.status(200).send({ diet: updateDiet })
             })
         } else {
             fs.unlink(filePath, (error) => {
@@ -78,22 +111,26 @@ export const getImageFile = (req, res) => {
     const path_file = './src/uploads/diets/' + file
 
     fs.exists(path_file, (exist) => {
-        if(exist){
+        if (exist) {
             res.sendFile(path.resolve(path_file))
-        }else{
-            res.status(404).send({message: 'Image not found'})
+        } else {
+            res.status(404).send({ message: 'Image not found' })
         }
     })
 }
 
 export const deleteImageFile = (req, res) => {
     const file = req.params.image
-    const path_file = './src/uploads/diets/' + file
+    if (file == 'default.jpg') {
+        res.status(200).send({ message: 'Image deleted' })
+    } else {
+        const path_file = './src/uploads/diets/' + file
 
-    try {
-        fs.unlinkSync(path_file)
-        res.status(200).send({message: 'Image deleted'})
-    } catch (err) {
-        res.status(404).send({message: 'Image not found'})
+        try {
+            fs.unlinkSync(path_file)
+            res.status(200).send({ message: 'Image deleted' })
+        } catch (err) {
+            res.status(404).send({ message: 'Image not found' })
+        }
     }
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 
 import { Training } from 'src/app/models/training';
+import { AuthService } from 'src/app/services/auth/auth.service';
 import { TrainingService } from 'src/app/services/training/training.service';
 import { Global } from 'src/app/services/global';
 
@@ -9,72 +9,75 @@ import { Global } from 'src/app/services/global';
   selector: 'app-trainings',
   templateUrl: './trainings.component.html',
   styleUrls: ['./trainings.component.sass'],
-  providers: [TrainingService]
+  providers: [TrainingService, AuthService]
 })
 export class TrainingsComponent implements OnInit {
   public trainings: Array<Training>
   public url: string
-  public addTraining: boolean
+  public view: boolean
 
   constructor(
     private _TrainingService: TrainingService,
-    private _route: ActivatedRoute
-  ) { 
+    private _authService: AuthService
+  ) {
     this.trainings = new Array()
-    this.url = Global.url
-    this.addTraining = false
-   }
+    this.url = Global.url + 'trainings/'
+    this.view = false
+  }
 
   ngOnInit(): void {
-    //crear las rutas relativas como en las dietas
-    this._route.params.subscribe(params => {
-      if(params['category'] && params['difficulty']){
-        let category = params['category']
-        let difficulty = params['difficulty']
+    this.getTrainings()
 
-        category = category.replace(/(?:^|\s)\S/g, (res:any) => { return res.toUpperCase()})
-        difficulty = difficulty.replace(/(?:^|\s)\S/g, (res:any) => { return res.toUpperCase()})
-
-        this.getTrainingsCategoryDifficulty(category, difficulty)
-      }else if(params['category']){
-        let category = params['category']
-        category = category.replace(/(?:^|\s)\S/g, (res:any) => { return res.toUpperCase()})
-
-        this.getTrainingsCategory(category)
-      }else{
-        this.getTrainings()
-        this.addTraining = true
+    this._authService.isAdmin().subscribe(
+      response => {
+        if(response.result) {
+          this.view = response.result
+        }
       }
-    })
+    )
   }
 
-  getTrainings(){
+  getTrainings() {
     this._TrainingService.getTrainings().subscribe(
       response => {
-        if(response.trainings){
+        if (response.trainings) {
           this.trainings = response.trainings
         }
       }
     )
   }
 
-  getTrainingsCategory(category: string){
+  getTrainingsCategory(category: string) {
     this._TrainingService.getTrainingsCategory(category).subscribe(
       response => {
-        if(response.trainings){
+        if (response.trainings) {
           this.trainings = response.trainings
         }
       }
     )
   }
 
-  getTrainingsCategoryDifficulty(category: string, difficulty: string){
+  getTrainingsCategoryDifficulty(category: string, difficulty: string) {
     this._TrainingService.getTrainingsCategoryDifficulty(category, difficulty).subscribe(
       response => {
-        if(response.trainings){
+        if (response.trainings) {
           this.trainings = response.trainings
         }
       }
     )
+  }
+
+  getTrainingImage(training: Training) {
+    return this.url + 'get-image/' + training.image
+  }
+
+  updateCategoryDifficulty(category: string, difficulty: string) {
+    if (category == '' && difficulty == '') {
+      this.getTrainings()
+    } else if (difficulty == '') {
+      this.getTrainingsCategory(category)
+    } else {
+      this.getTrainingsCategoryDifficulty(category, difficulty)
+    }
   }
 }

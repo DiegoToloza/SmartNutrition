@@ -21,15 +21,15 @@ const userSchema = new Schema(
                 ref: "Role",
             },
         ],
+        image: {
+            type: String,
+            unique: true,
+        },
     },
     {
         timestamps: true,
         versionKey: false,
     }
 );
-
-userSchema.statics.comparePassword = async (password, receivedPassword) => {
-    return await bcrypt.compare(password, receivedPassword)
-}
 
 export default model('User', userSchema);

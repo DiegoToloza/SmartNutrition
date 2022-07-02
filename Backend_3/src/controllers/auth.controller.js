@@ -12,7 +12,8 @@ export const signUp = async (req, res) => {
     const newUser = new User({
         username,
         email,
-        password: await bcrypt.hash(password, 10)
+        password: await bcrypt.hash(password, 10),
+        image: 'default.jpg'
     })
 
     if(roles) {
@@ -46,4 +47,8 @@ export const signIn = async (req, res) => {
     })
     
     res.status(200).json({token})
+}
+
+export const isAdmin = (req, res) => {
+    res.status(200).json({result: true})
 }

@@ -26,10 +26,10 @@ export class DietCreateComponent implements OnInit {
   ) {
     this.title = 'Crear Dieta'
     this.status = ''
-    this.diet = new Diet('','','','','','')
-    this.save_diet = new Diet('','','','','','')
+    this.diet = new Diet('', '', '', '', '', '')
+    this.save_diet = new Diet('', '', '', '', '', '')
     this.filesToUpload = new Array()
-    this.url = Global.url
+    this.url = Global.url + 'diets/'
   }
 
   ngOnInit(): void {
@@ -38,21 +38,39 @@ export class DietCreateComponent implements OnInit {
   onSubmit(form: any) {
     this._dietService.saveDiet(this.diet).subscribe(
       response => {
-        if(response.diet){
+        if (response.diet) {
           //subir la imagen
-          this._uploadService.makeFileRequest(this.url + 'diet/upload-image/' + response.diet._id, [], this.filesToUpload, 'image')
-          .then((result:any) => {
-            if(result.diet){
-              this.save_diet = result.diet
+          if (this.filesToUpload.length > 0) {
+            this._uploadService.makeFileRequest(this.url + 'upload-image/' + response.diet._id, [], this.filesToUpload, 'image')
+              .then((result: any) => {
+                if (result.diet) {
+                  this.save_diet = result.diet
 
-              this.status = 'success'
-              form.reset()
-            }else{
-              this._dietService.deleteDiet(response.diet._id).subscribe()
-              this.status = 'failed'
-            }
-          })
-        }else{
+                  this.status = 'success'
+                  form.reset()
+                } else {
+                  this._dietService.deleteDiet(response.diet._id).subscribe()
+                  this.status = 'failed'
+                }
+              })
+          }else {
+            response.diet.image = 'default.jpg'
+            this._dietService.updateDiet(response.diet).subscribe(
+              response => {
+                if (response.diet) {
+                  this.save_diet = response.diet
+  
+                  this.status = 'success'
+                  form.reset()
+                }else {
+                  this._dietService.deleteDiet(response.diet._id).subscribe()
+                  this.status = 'failed'
+                }
+              }
+            )
+          }
+
+        } else {
           this.status = 'failed'
         }
 
@@ -64,9 +82,9 @@ export class DietCreateComponent implements OnInit {
       }
     )
   }
-  
-  fileChangeEvent(fileInput: any){
-    this.filesToUpload = <Array<File>> fileInput.target.files
+
+  fileChangeEvent(fileInput: any) {
+    this.filesToUpload = <Array<File>>fileInput.target.files
   }
 
 }

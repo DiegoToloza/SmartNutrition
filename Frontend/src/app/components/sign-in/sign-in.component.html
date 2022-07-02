@@ -1,6 +1,6 @@
 <app-header-secondary></app-header-secondary>
-<!--
-<div class="container-main body-main">
+
+<div class="container-main body-main mb-5">
     <div class="form">
         <h3>{{title}}</h3>
 
@@ -15,12 +15,14 @@
                 <input type="password" class="form-control" name="password" #password="ngModel" [(ngModel)]="signInUser.password" placeholder="Contraseña" required>
                 <span class="form-error" *ngIf="password.touched && !password.valid">Contraseña es obligatoria</span>
             </div>
+
+            <span class="form-error" *ngIf="errorSesion">E-mail o Contraseña incorrectas</span>
             
             <input type="submit" value="Iniciar Sesion" class="btn-register" [disabled]="!signInForm.form.valid">
         </form>
-
+<!--
         <p class="register-with">o Registrate con</p>
-
+        
         <div class="register-with-btn">
             <div class="btn-social btn-facebook">
                 <a>
@@ -35,8 +37,7 @@
                 </a>
             </div>
         </div>
-
+-->
         <p class="log-in">¿No tienes una cuenta? <a [routerLink]="['/registrarse']" >Regístrate aquí</a></p>
     </div>
 </div>
--->

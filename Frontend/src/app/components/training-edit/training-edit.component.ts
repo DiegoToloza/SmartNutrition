@@ -34,7 +34,7 @@ export class TrainingEditComponent implements OnInit {
     this.training = new Training('','','','','','','')
     this.save_training = new Training('','','','','','','')
     this.filesToUpload = new Array()
-    this.url = Global.url
+    this.url = Global.url + 'trainings/'
   }
 
   ngOnInit(): void {
@@ -60,11 +60,11 @@ export class TrainingEditComponent implements OnInit {
         if(response.training){
           //subir la imagen
           if(this.filesToUpload.length){
-            this._uploadService.makeFileRequest(this.url + 'training/upload-image/' + response.training._id, [], this.filesToUpload, 'image')
+            this._uploadService.makeFileRequest(this.url + 'upload-image/' + response.training._id, [], this.filesToUpload, 'image')
             .then((result: any) => {
               if(result.training){
                 //eliminar imagen anterior
-                this._uploadService.deleteFileRequest(this.url + '/training/delete-image/' + this.pre_training.image).subscribe()
+                this._uploadService.deleteFileRequest(this.url + 'delete-image/' + this.pre_training.image).subscribe()
               
                 this.save_training = result.training
                 this.status = 'success'
@@ -94,4 +94,7 @@ export class TrainingEditComponent implements OnInit {
     this.filesToUpload = <Array<File>> fileInput.target.files
   }
 
+  getTrainingImage() {
+    return this.url + 'get-image/' + this.training.image
+  }
 }

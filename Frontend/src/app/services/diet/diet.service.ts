@@ -14,44 +14,44 @@ export class DietService {
   constructor(
     private _http: HttpClient
   ) {
-    this.url = Global.url
+    this.url = Global.url + 'diets/'
   }
 
   saveDiet(diet: Diet): Observable<any> {
     let params = JSON.stringify(diet)
     let headers = new HttpHeaders().set('Content-Type', 'application/json')
 
-    return this._http.post(this.url + 'save-diet', params, { headers: headers })
+    return this._http.post(this.url, params, { headers: headers })
   }
 
   getDiet(id: string): Observable<any> {
     let headers = new HttpHeaders().set('Content-Type', 'application/json')
 
-    return this._http.get(this.url + 'diets/' + id, { headers: headers })
+    return this._http.get(this.url + id, { headers: headers })
   }
 
   getDiets(): Observable<any> {
     let headers = new HttpHeaders().set('Content-Type', 'application/json')
 
-    return this._http.get(this.url + 'diets', { headers: headers })
+    return this._http.get(this.url, { headers: headers })
   }
 
   getDietsCategory(category: string): Observable<any> {
     let headers = new HttpHeaders().set('Content-Type', 'application/json')
 
-    return this._http.get(this.url + 'diets?category=' + category, { headers: headers })
+    return this._http.get(this.url + '?category=' + category, { headers: headers })
   }
 
   deleteDiet(id: string): Observable<any> {
     let headers = new HttpHeaders().set('Content-Type', 'application/json')
 
-    return this._http.delete(this.url + 'diets/' + id, { headers: headers })
+    return this._http.delete(this.url + id, { headers: headers })
   }
 
   updateDiet(diet: Diet): Observable<any> {
     let params = JSON.stringify(diet)
     let headers = new HttpHeaders().set('Content-Type', 'application/json')
 
-    return this._http.put(this.url + 'diets/' + diet._id, params, { headers: headers })
+    return this._http.put(this.url + diet._id, params, { headers: headers })
   }
 }

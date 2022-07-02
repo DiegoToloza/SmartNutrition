@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
 
 import { Diet } from 'src/app/models/diet';
+import { AuthService } from 'src/app/services/auth/auth.service';
 import { DietService } from 'src/app/services/diet/diet.service';
 import { Global } from 'src/app/services/global';
 
@@ -10,55 +10,67 @@ import { Global } from 'src/app/services/global';
   selector: 'app-diets',
   templateUrl: './diets.component.html',
   styleUrls: ['./diets.component.sass'],
-  providers: [DietService]
+  providers: [DietService, AuthService]
 })
 export class DietsComponent implements OnInit {
   public diets: Array<Diet>
-  public activo: string
   public url: string
-  public addDiet: boolean
+  public categoryActive: string
+  public view: boolean
 
   constructor(
     private _dietService: DietService,
-    private _router: Router,
-    private _route: ActivatedRoute
+    private _authService: AuthService
   ) {
     this.diets = new Array()
-    this.activo = ''
-    this.url = Global.url
-    this.addDiet = true
+    this.url = Global.url + 'diets/'
+    this.categoryActive = ''
+    this.view = false
   }
 
   ngOnInit(): void {
     this.getDiets()
+
+    this._authService.isAdmin().subscribe(
+      response => {
+        if(response.result) {
+          this.view = response.result
+        }
+      }
+    )
   }
 
-  getDiets(){
+  getDiets() {
     this._dietService.getDiets().subscribe(
       response => {
-        this.diets = response
+        if (response.diets) {
+          this.diets = response.diets
+        }
       }
     )
   }
 
-  getDietsCategory(category: string){
+  getDietsCategory(category: string) {
     this._dietService.getDietsCategory(category).subscribe(
       response => {
-        this.diets = response
+        if (response.diets) {
+          this.diets = response.diets
+        }
       }
     )
   }
 
-  alternar(category: string) {
-    if(category == this.activo) {
-      this.activo = ''
+  getDietImage(diet: Diet) {
+    return this.url + 'get-image/' + diet.image
+  }
+
+  updateCategory(category: string) {
+    if (category == this.categoryActive) {
+      this.categoryActive = ''
       this.getDiets()
-    }else if(category == 'no-vegan'){
-      this.activo = category
-      this.getDietsCategory('No Vegana')
-    }else if(category == 'vegan'){
-      this.activo = category
-      this.getDietsCategory('Vegana')
+    } else {
+      this.categoryActive = category
+      this.getDietsCategory(this.categoryActive)
     }
   }
 }

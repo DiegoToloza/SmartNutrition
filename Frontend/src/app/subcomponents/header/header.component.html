@@ -1,21 +1,21 @@
 <header class="fixed-top container-main">
     <nav class="navbar navbar-expand-lg">
-        <div class="container-fluid" *ngIf="false; then logeado else noLogeado">
+        <div class="container-fluid" *ngIf="loggedIn(); then logeado else noLogeado">
 
         </div>
-        <ng-template #logeado></ng-template>
-        <!--
+
         <ng-template #logeado>
             <a class="navbar-brand logo" [routerLink]="['/inicio']">
                 <img src="../assets/img/running.svg" alt="Logo" width="36">
                 <div class="title">SmartNutrition</div>
-                <div class="title-collapsed">SN</div>
             </a>
 
-            <button class="btn navbar-toggler" type="button" data-bs-toggle="collapse"
+            <button class="btn navbar-toggler" id="navMenu" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
                 aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+                <span></span>
+                <span></span>
+                <span></span>
             </button>
 
             <div class="collapse navbar-collapse justify-content-center" id="navbarNavAltMarkup">
@@ -30,19 +30,17 @@
 
             <div class="login dropdown">
                 <a class="btn btn-info dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src={{getUser().img}} alt="" width="45">
+                    <img src={{getUserImage()}} alt="" width="45" *ngIf="user.image">
                 </a>
 
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink">
                     <li><a class="dropdown-item" href="#">Mi Cuenta</a></li>
-                    <li><a class="dropdown-item" [routerLink]="['/dietas/mis-dietas']">Mis Dietas</a></li>
-                    <li><a class="dropdown-item" href="#">Mis Ejercicios</a></li>
+                    <li><a class="dropdown-item" href="#" *ngIf="view">Administrar</a></li>
                     <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item log-out">Cerrar Sesión</a></li>
+                    <li><a class="dropdown-item log-out" (click)="logOut()">Cerrar Sesión</a></li>
                 </ul>
             </div>
         </ng-template>
-        -->
 
         <ng-template #noLogeado>
             <a class="navbar-brand logo" [routerLink]="['/inicio']">

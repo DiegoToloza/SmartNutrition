@@ -6,6 +6,7 @@ import pkg from '../package.json'
 import {createRoles} from './libs/initialSetup'
 
 import dietsRoutes from './routes/diets.routes'
+import trainingRoutes from './routes/trainings.routes'
 import authRoutes from './routes/auth.routes'
 import userRoutes from './routes/user.routes'
 
@@ -36,6 +37,7 @@ app.use((req, res, next) => {
 });
 
 app.use('/api/diets', dietsRoutes)
+app.use('/api/trainings', trainingRoutes)
 app.use('/api/auth', authRoutes)
 app.use('/api/users', userRoutes)
 

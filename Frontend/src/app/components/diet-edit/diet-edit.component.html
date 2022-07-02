@@ -46,7 +46,7 @@
                 <label for="image">Imagen de la dieta</label>
 
                 <span class="image" *ngIf="diet.image">
-                    <img src="{{url+'diets/get-image/'+diet.image}}" alt="" width="100">
+                    <img src="{{getDietImage()}}" alt="" width="100">
                     <br>
                 </span>
 

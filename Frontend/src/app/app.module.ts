@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { YouTubePlayerModule } from '@angular/youtube-player';
+import { CookieService } from 'ngx-cookie-service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -32,6 +33,9 @@ import { HeaderComponent } from './subcomponents/header/header.component';
 import { HeaderSecondaryComponent } from './subcomponents/header-secondary/header-secondary.component';
 import { FooterComponent } from './subcomponents/footer/footer.component';
 
+import { AuthGuard } from './guard/auth.guard';
+import { TokenInterceptorService } from './services/token-interceptor/token-interceptor.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,7 +57,7 @@ import { FooterComponent } from './subcomponents/footer/footer.component';
 
     HeaderComponent,
     HeaderSecondaryComponent,
-    FooterComponent
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
@@ -62,7 +66,15 @@ import { FooterComponent } from './subcomponents/footer/footer.component';
     FormsModule,
     YouTubePlayerModule
   ],
-  providers: [],
+  providers: [
+    CookieService,
+    AuthGuard,
+    {
+      provide: HTTP_INTERCEPTORS, 
+      useClass: TokenInterceptorService,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

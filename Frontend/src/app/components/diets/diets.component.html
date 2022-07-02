@@ -2,12 +2,12 @@
 
 <div class="container-main body-main">
     <nav>
-        <ul class="nav justify-content-center">
+        <ul class="nav justify-content-center no-selected">
             <li class="nav-item">
-                <a class="nav-link" [ngClass]="{'active_': activo == 'no-vegan'}" (click)="alternar('no-vegan')">No Veganas</a>
+                <a class="nav-link" [ngClass]="{'active_': categoryActive == 'No Vegana'}" (click)="updateCategory('No Vegana')">No Veganas</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" [ngClass]="{'active_': activo == 'vegan'}" (click)="alternar('vegan')">Veganas</a>
+                <a class="nav-link" [ngClass]="{'active_': categoryActive == 'Vegana'}" (click)="updateCategory('Vegana')">Veganas</a>
             </li>
             <!--
             <li class="nav-item">
@@ -21,7 +21,7 @@
         <div class="container">            
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3" id="album-diets">
 
-                <div class="col" [routerLink]="['/dieta/agregar-dieta']" *ngIf="addDiet">
+                <div class="col" [routerLink]="['/dieta/agregar-dieta']" *ngIf="view">
                     <div class="card shadow">
                         <div class="card-body add-diet">
                             <img src="../assets/img/diets/plus-circle-dotted.svg" alt="Agregar una dieta">
@@ -36,7 +36,7 @@
                     <div class="col" [routerLink]="['/dieta', diet._id]">
                         <div class="card shadow">
                             <div class="image">
-                                <img src="{{url + 'diets/get-image/' + diet.image}}" class="card-img-top" alt="...">
+                                <img src="{{getDietImage(diet)}}" class="card-img-top" alt="...">
                                 <h5>{{diet.name}}</h5>
                             </div>
                             <div class="card-body">

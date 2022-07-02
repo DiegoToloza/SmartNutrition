@@ -17,6 +17,8 @@ import { AboutUsComponent } from './components/about-us/about-us.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { ErrorComponent } from './components/error/error.component';
 
+import { AuthGuard } from './guard/auth.guard';
+
 
 const routes: Routes = [
   {path: '', redirectTo: '/inicio', pathMatch: 'full'},
@@ -32,7 +34,7 @@ const routes: Routes = [
   {path: 'ejercicio/editar-ejercicio/:id', component: TrainingEditComponent},
   {path: 'ejercicio/:id', component: TrainingComponent},
 
-  {path: 'tienda', component: ShopComponent},
+  {path: 'tienda', redirectTo: '**', pathMatch: 'full'},
   {path: 'registrarse', component: LogInComponent},
   {path: 'iniciar-sesion', component: SignInComponent},
   {path: 'sobre-nosotros', component: AboutUsComponent},

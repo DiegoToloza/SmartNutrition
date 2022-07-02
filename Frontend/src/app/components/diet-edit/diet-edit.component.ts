@@ -34,7 +34,7 @@ export class DietEditComponent implements OnInit {
     this.diet = new Diet('','','','','','')
     this.save_diet = new Diet('','','','','','')
     this.filesToUpload = new Array()
-    this.url = Global.url
+    this.url = Global.url + 'diets/'
   }
 
   ngOnInit(): void {
@@ -48,8 +48,8 @@ export class DietEditComponent implements OnInit {
   getDiet(id: string) {
     this._dietService.getDiet(id).subscribe(
       response => {
-        this.diet = response
-        this.pre_diet = response
+        this.diet = response.diet
+        this.pre_diet = response.diet
       }
     )
   }
@@ -57,14 +57,14 @@ export class DietEditComponent implements OnInit {
   onSubmit(form: any) {
     this._dietService.updateDiet(this.diet).subscribe(
       response => {
-        if(response){
+        if(response.diet){
           //subir la imagen
           if(this.filesToUpload.length){
-            this._uploadService.makeFileRequest(this.url + 'diets/upload-image/' + response._id, [], this.filesToUpload, 'image')
+            this._uploadService.makeFileRequest(this.url + 'upload-image/' + response.diet._id, [], this.filesToUpload, 'image')
             .then((result: any) => {
-              if(result){
+              if(result.diet){
                 //eliminar imagen anterior
-                this._uploadService.deleteFileRequest(this.url + 'diets/delete-image/' + this.pre_diet.image).subscribe()
+                this._uploadService.deleteFileRequest(this.url + 'delete-image/' + this.pre_diet.image).subscribe()
 
                 this.save_diet = result.diet
                 this.status = 'success'
@@ -74,7 +74,7 @@ export class DietEditComponent implements OnInit {
               }
             })
           }else{
-            this.save_diet = response
+            this.save_diet = response.diet
             this.status = 'success'
           }
         }else{
@@ -92,5 +92,9 @@ export class DietEditComponent implements OnInit {
 
   fileChangeEvent(fileInput: any){
     this.filesToUpload = <Array<File>> fileInput.target.files
+  }
+
+  getDietImage() {
+    return this.url + 'get-image/' + this.diet.image
   }
 }
