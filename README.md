@@ -8,15 +8,14 @@ SmartNutrition es una web, la cual maneja dietas, ejercicios que son manejados p
 
 2. Se debe crear una database en el Host "localhost:27017" en MongoDB con el nombre "smart_nutrition", agregar las coleccionse *"diets"*, *"trainings"*, *"roles"* y *"users"*, y cargar los datos que se encuentran en el directorio *"Data"*.
 
-3. Se ejecutan el comando `$ npm install` en los directorios *"Backend"* y *"Frontend"* con el fin de cargar las dependencias.
+3. Se debe ejecutar el comando `$ npm install` en los directorios *"Backend"* y *"Frontend"* con el fin de cargar las dependencias.
 
-1.- Se debe crear una database en el Host "localhost:27017" en MongoDB con el nombre "smart_nutrition", agregar las colecciones "diets" y "trainings", y cargar los datos que estan en la carpeta "Data".
-2.- Se debe ejecutar el comando "npm install" en los directorios "Backend" y "Frontend" para cargar las dependencias.
-3.- Se debe ejecutar el Backend con el comando "npm start" posicionandose en el directorio "Backend".
-4.- Se debe ejecutar el Frontend con el comando "ng serve" posicionandose en el directorio "Frontend".
+4. Se debe ejecutar el comando `$ npm run dev` en el directorio *"Backend"* para iniciar el API rest.
 
+5. Se debe ejecutar el comando `$ ng serve` en el directorio *"Frontend"* para iniciar la aplicacion web.
 
-Las funcionalidades son:
+## Funcionalidades
+
 1.- Creación de usuarios: Se crea un usuario con los atributos "Nombre","E-mail","Contraseña", y se almacenan en la base de datos, generando un id propio.
 2.- Creación de Dietas Personalizadas: Al haber iniciado sesión, el usuario podrá crear sus propias dietas, las que se almacenaran en la base de datos asociandolas al id del usuario
 3.- Creación de listas de ejercicios: Al haber iniciado sesión, el usuario podrá crear sus propias rutinas de ejercicios, usando los que dispone la aplicación web. Estas listas se almacenaran en la base de datos asociandolas al id del usuario
