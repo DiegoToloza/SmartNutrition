@@ -21,6 +21,8 @@ SmartNutrition es una web, la cual maneja dietas, ejercicios que son manejados p
 
 * **Obtención de usuario:**: Por medio del token que se genera al iniciar sesión este hara una petición al *"Backend"* y obtendra los datos del usuario logeado.
 
+* **Usuarios**: Existen 2 roles *"usuario"* y *"administrador"*, para iniciar como *"administrador"* el `email es: admin@gmail.com` y la `contraseña es: admin`.
+
 ### Dietas
 * **Creación de una dieta**: Un usuario ya logeado y además con el rol de *"administrador"* podra crear una dieta con los atributos *"nombre"*, *"descripción"*, *"categoria"*, *"contenido"* y la *"imagen"*, en caso de no proporcionar una *"imagen"* la web agregara una *"imagen default"*.
 
