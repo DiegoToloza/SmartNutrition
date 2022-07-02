@@ -6,7 +6,9 @@ SmartNutrition es una web, la cual maneja dietas, ejercicios que son manejados p
 
 1. Se debe clonar el repositorio desde git.
 
-2. Se debe crear una database en el Host "localhost:27017" en MongoDB con el nombre "smart_nutrition", agregar las coleccionse "diets", "trainings", "roles" y "users", cargar los datos que estan en la carpeta "Data".
+2. Se debe crear una database en el Host "localhost:27017" en MongoDB con el nombre "smart_nutrition", agregar las coleccionse *"diets"*, *"trainings"*, *"roles"* y *"users"*, y cargar los datos que se encuentran en el directorio *"Data"*.
+
+3. Se ejecutan el comando `$ npm install` en los directorios *"Backend"* y *"Frontend"* con el fin de cargar las dependencias.
 
 1.- Se debe crear una database en el Host "localhost:27017" en MongoDB con el nombre "smart_nutrition", agregar las colecciones "diets" y "trainings", y cargar los datos que estan en la carpeta "Data".
 2.- Se debe ejecutar el comando "npm install" en los directorios "Backend" y "Frontend" para cargar las dependencias.
