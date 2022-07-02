@@ -1,11 +1,18 @@
 # SmartNutrition
+
+SmartNutrition es una web, la cual maneja dietas, ejercicios que son manejados por usuarios con el role de administrador.
 La aplicacion web ocupa Angular cli - NodeJs - MongoDB para Frontend - Backend - Base de Datos respectivamente.
 
-Para ejecutar la aplicación:
+## Instalación
+
+1. Se debe clonar el repositorio desde git.
+
+2. 
 1.- Se debe crear una database en el Host "localhost:27017" en MongoDB con el nombre "smart_nutrition", agregar las colecciones "diets" y "trainings", y cargar los datos que estan en la carpeta "Data".
 2.- Se debe ejecutar el comando "npm install" en los directorios "Backend" y "Frontend" para cargar las dependencias.
 3.- Se debe ejecutar el Backend con el comando "npm start" posicionandose en el directorio "Backend".
 4.- Se debe ejecutar el Frontend con el comando "ng serve" posicionandose en el directorio "Frontend".
+
 
 Las funcionalidades son:
 1.- Creación de usuarios: Se crea un usuario con los atributos "Nombre","E-mail","Contraseña", y se almacenan en la base de datos, generando un id propio.

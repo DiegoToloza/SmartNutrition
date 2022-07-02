@@ -10,9 +10,10 @@ import { TrainingsComponent } from './components/trainings/trainings.component';
 import { TrainingCreateComponent } from './components/training-create/training-create.component';
 import { TrainingEditComponent } from './components/training-edit/training-edit.component';
 import { TrainingComponent } from './components/training/training.component';
-import { ShopComponent } from './components/shop/shop.component';
+// import { ShopComponent } from './components/shop/shop.component';
 import { LogInComponent } from './components/log-in/log-in.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
+import { MyAccountComponent } from './components/my-account/my-account.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { ErrorComponent } from './components/error/error.component';
@@ -37,6 +38,7 @@ const routes: Routes = [
   {path: 'tienda', redirectTo: '**', pathMatch: 'full'},
   {path: 'registrarse', component: LogInComponent},
   {path: 'iniciar-sesion', component: SignInComponent},
+  {path: 'mi-cuenta', component: MyAccountComponent},
   {path: 'sobre-nosotros', component: AboutUsComponent},
   {path: 'contacto', component: ContactComponent},
   {path: '**', component: ErrorComponent}

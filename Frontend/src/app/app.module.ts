@@ -24,6 +24,8 @@ import { ShopComponent } from './components/shop/shop.component';
 import { LogInComponent } from './components/log-in/log-in.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 
+import { MyAccountComponent } from './components/my-account/my-account.component';
+
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { ContactComponent } from './components/contact/contact.component';
 
@@ -51,6 +53,7 @@ import { TokenInterceptorService } from './services/token-interceptor/token-inte
     ShopComponent,
     LogInComponent,
     SignInComponent,
+    MyAccountComponent,
     AboutUsComponent,
     ContactComponent,
     ErrorComponent,

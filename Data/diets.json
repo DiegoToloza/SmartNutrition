@@ -1,29 +1,11 @@
 [{
   "_id": {
-    "$oid": "62833b032d3a22e62fe25dd8"
-  },
-  "name": "Lorem Ipsum",
-  "description": "Lorem Ipsum Lorem Ipsum.",
-  "category": "Vegana",
-  "content": "Lorem Ipsum Lorem Ipsum Lorem Ipsum.",
-  "image": "Uvo-3sMBFUIQ2kJKNW5sXSFU.jpg"
-},{
-  "_id": {
-    "$oid": "62833b392d3a22e62fe25dd9"
-  },
-  "name": "AAA",
-  "description": "aaa aaa aaa aaa.",
-  "category": "No Vegana",
-  "content": "aaa aaa aa aaaa aaaa.",
-  "image": "hipqwK9gLXPIM8wCvJ4KXDyJ.jpg"
-},{
-  "_id": {
     "$oid": "62847bb19be8199d7c024aa1"
   },
   "name": "Pollito",
   "description": "Pollito con papas",
   "category": "No Vegana",
-  "content": "Pollito a las brasas",
+  "content": "Pollito a las brasas con papitas cocidas.",
   "image": "4_Xjto5mxR-NvjS_uEK_-Kr5.jpg",
   "__v": 0
 },{
@@ -38,12 +20,59 @@
   "__v": 0
 },{
   "_id": {
-    "$oid": "6295b2d75cceb51556c2b242"
+    "$oid": "62bf9ff706c2011f61c0327c"
   },
-  "name": "Probando Web",
-  "description": "uaoeueo",
+  "name": "Dieta Generica",
+  "description": "Dieta Generica.",
   "category": "Vegana",
-  "content": "oeauaeoueo oeuaueoa uuoea u",
-  "image": "ffCbVkVsPOBDANoK6B83bjJL.jpg",
-  "__v": 0
+  "content": "Dieta Generica.",
+  "image": "default.jpg",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1656725495370"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1656791372641"
+    }
+  }
+},{
+  "_id": {
+    "$oid": "62c0a0e9dc13c7d7304f2f5b"
+  },
+  "name": "Cetogenica",
+  "description": "Una dieta para tu cetogenico.",
+  "category": "No Vegana",
+  "content": "Una dieta para tu cetogenico.",
+  "image": "Boc9SpiiROG8QqPX5WjDBNH7.jpg",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1656791273157"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1656791273174"
+    }
+  }
+},{
+  "_id": {
+    "$oid": "62c0a129dc13c7d7304f2f75"
+  },
+  "name": "Caballo",
+  "description": "A pura paja y agua.",
+  "category": "Vegana",
+  "content": "A pura paja y agua.",
+  "image": "wnmLCorn9dQt1C3QO2ldIamV.jpg",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1656791337916"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1656791337924"
+    }
+  }
 }]
