@@ -21,10 +21,7 @@ const userSchema = new Schema(
                 ref: "Role",
             },
         ],
-        image: {
-            type: String,
-            unique: true,
-        },
+        image: String
     },
     {
         timestamps: true,

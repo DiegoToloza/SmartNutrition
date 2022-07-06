@@ -1,10 +1,10 @@
 [{
   "_id": {
-    "$oid": "62c0a52fdc13c7d7304f3106"
+    "$oid": "62c5a41fb9ef9a13b471fa58"
   },
   "username": "Admin",
   "email": "admin@gmail.com",
-  "password": "$2a$10$zlm0yv7e2/REa0vV.gCKhOhpTKxmquEWQXh4sLtCSLAQ.0cRE8Lra",
+  "password": "$2a$10$M5dkfGYyF1ogV.ryTF6p3enq/7XQb2DF1zDgIyOCI3SfdvwXjBjV2",
   "roles": [
     {
       "$oid": "62bf67858b7c81a329aab894"
@@ -16,21 +16,21 @@
   "image": "admin.png",
   "createdAt": {
     "$date": {
-      "$numberLong": "1656792367978"
+      "$numberLong": "1657119775398"
     }
   },
   "updatedAt": {
     "$date": {
-      "$numberLong": "1656792367978"
+      "$numberLong": "1657119775398"
     }
   }
 },{
   "_id": {
-    "$oid": "62c0a602dc13c7d7304f312f"
+    "$oid": "62c5a493b9ef9a13b471fa91"
   },
-  "username": "User",
+  "username": "user",
   "email": "user@gmail.com",
-  "password": "$2a$10$5uGJTAG4Pyun7QFQlkyutOp9t5CkAJVfWrpT9XenslbOJVQIIpTZK",
+  "password": "$2a$10$8VlSuoNQJnQPh2TqiqRD6ekVlA/FT1q70BN4cBKeb/f7ong4rTxUC",
   "roles": [
     {
       "$oid": "62bf67858b7c81a329aab894"
@@ -39,12 +39,12 @@
   "image": "default.jpg",
   "createdAt": {
     "$date": {
-      "$numberLong": "1656792578184"
+      "$numberLong": "1657119891019"
     }
   },
   "updatedAt": {
     "$date": {
-      "$numberLong": "1656792578184"
+      "$numberLong": "1657119891019"
     }
   }
 }]
